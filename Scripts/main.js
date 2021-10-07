@@ -1,6 +1,7 @@
 var aboutView = new View(document.getElementById("about_view_pane"));
 var settingsView = new View(document.getElementById("settings_view_pane"));
 var saveView = new SaveView(document.getElementById("save_view_pane"), document.getElementById("download_file"));
+var popup = null;
 var editor = {
 	content: "Textual Alpha",
 	formattedContent: "Textual Alpha",
@@ -19,6 +20,7 @@ var editor = {
 		this.formattedContent = result;
 	},
 	save: function(dom) {
+		popup = new Popup(document.getElementById("popups"), document.getElementById("disableInteractionsMesh"), "This is a popup test.");
 		var content = this.formattedContent;
 		var blob = new Blob([content], {
 			type: "text/plain"

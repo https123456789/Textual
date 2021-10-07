@@ -56,6 +56,17 @@ a {
 }
 #settings_view_pane {
 }
+#popups {
+	position: fixed;
+	width: 60vw;
+	height: 40vh;
+	left: 20vw;
+	right: 20vw;
+	top: 5vh;
+	background-color: rgba(255, 255, 255, 1);
+	display: none;
+	z-index: 12;
+}
 
 /* UI Meshes */
 .disableInteractionsMesh {
