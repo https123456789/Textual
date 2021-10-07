@@ -1,0 +1,73 @@
+body {
+	margin: 0%;
+	display: flex;
+	flex-direction: column;
+}
+a {
+	color: rgb(0, 0, 0);
+}
+#toolbar {
+	background-color: rgba(150, 150, 150, 1);
+	height: 10vh;
+	display: flex;
+	flex-direction: row;
+}
+#toolbar > * {
+	height: 100%;
+	flex: 1;
+	border: none;
+	background-color: rgba(150, 150, 150, 1);
+}
+#toolbar > *:hover {
+	background-color: rgba(100, 100, 100, 1);
+}
+#editor {
+	background-color: rgba(200, 200, 200, 1);
+	height: 90vh;
+	border: none;
+	outline: none;
+	resize: none;
+	padding-left: 1%;
+	white-space: pre;
+}
+/* View Panes */
+.view {
+	display: none;
+	background-color: rgba(255, 255, 255, 1);
+	padding: 1%;
+	position: fixed;
+	top: 5vh;
+	left: 5vw;
+	right: 5vw;
+	bottom: 5vh;
+	z-index: 11;
+}
+.view-close-button {
+	position: fixed;
+	right: 5vw;
+	top: 5vh;
+	border: none;
+	background-color: rgba(150, 150, 150, 1);
+}
+.view-close-button:hover {
+	background-color: rgba(100, 100, 100, 1);
+}
+#about_view_pane {
+}
+#settings_view_pane {
+}
+
+/* UI Meshes */
+.disableInteractionsMesh {
+	background-color: rgba(200, 200, 200, 0.5);
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0%;
+	left: 0%;
+	right: 0%;
+	bottom: 0%;
+	z-index: 10;
+	display: none;
+}
+/* Basic Classes */

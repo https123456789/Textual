@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Textual</title>
+		<link rel="stylesheet" href="style.css?rnd=1">
+	</head>
+	<body>
+		<div id="toolbar">
+			<button onclick="aboutView.show()">About</button>
+			<button onclick="settingsView.show()">Settings</button>
+			<button onclick="saveView.show()">Save</button>
+		</div>
+		<code><div id="editor" contenteditable="true"></div>
+		</code>
+		<!--
+			Document view panes
+		-->
+		<div id="about_view_pane" class="view">
+			<button onclick="aboutView.hide()" class="view-close-button">Close</button>
+			<h1>About</h1>
+			<hr>
+			<p>Textual is a brwoser based text editor.</p>
+			<p>Textual was created by <a href="https://github.com/https123456789">https123456789</a>.</p>
+		</div>
+		<div id="settings_view_pane" class="view">
+			<button onclick="settingsView.hide()" class="view-close-button">Close</button>
+			<h1>Settings</h1>
+			<hr>
+		</div>
+		<div id="save_view_pane" class="view">
+			<button onclick="saveView.hide()" class="view-close-button">Close</button>
+			<h1>Save</h1>
+			<hr>
+			<p>Save as a file: <span id="download_file"></span>.</p>
+		</div>
+		<div class="disableInteractionsMesh" id="disableInteractionsMesh"></div>
+		<script src="Scripts/base.js"></script>
+		<script src="Scripts/main.js"></script>
+	</body>
+</html>
