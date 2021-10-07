@@ -3,8 +3,8 @@ var settingsView = new View(document.getElementById("settings_view_pane"));
 var saveView = new SaveView(document.getElementById("save_view_pane"), document.getElementById("download_file"));
 var popup = null;
 var editor = {
-	content: "Textual Alpha",
-	formattedContent: "Textual Alpha",
+	content: "Textual Beta 1.0",
+	formattedContent: "Textual Beta 1.0",
 	dom: document.getElementById("editor"),
 	init: function() {
 		this.dom.innerHTML = this.content;
