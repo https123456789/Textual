@@ -20,17 +20,22 @@ var editor = {
 		this.formattedContent = result;
 	},
 	save: function(dom) {
-		popup = new Popup(document.getElementById("popups"), document.getElementById("disableInteractionsMesh"), "This is a popup test.");
+		var popupText = new PopupText({
+			header: "Select File Type:",
+			body: "<select id='popup_input'><option value='text/plain'>Plain Text</option></select>"
+		});
+		popup = new Popup(document.getElementById("popups"), document.getElementById("disableInteractionsMesh"), popupText.parse(), waitForInput=false);
 		var content = this.formattedContent;
+		var fileType = document.getElementById("popup_input").value;
 		var blob = new Blob([content], {
-			type: "text/plain"
+			type: fileType
 		});
 		var link = document.createElement("a");
 		link.download = "file.txt";
 		link.href = window.URL.createObjectURL(blob);
 		link.innerHTML = "Download";
 		dom.innerHTML = "";
-		dom.innerHTML += "<a href='" + link + "' download='file.txt'>Download</a>";
+		dom.innerHTML += "<a href='" + link + "' download='file.html'>Download</a>";
 	}
 }
 

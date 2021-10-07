@@ -66,6 +66,20 @@ a {
 	background-color: rgba(255, 255, 255, 1);
 	display: none;
 	z-index: 12;
+	text-align: center;
+	overflow-y: auto;
+}
+.popup-close-button {
+	border: none;
+	width:60vw;
+	position:fixed;
+	right:20vw;
+	left:20vw;
+	bottom:55vh;
+	background-color: rgba(150, 150, 150, 1);
+}
+.popup-close-button:hover {
+	background-color: rgba(100, 100, 100, 1);
 }
 
 /* UI Meshes */
