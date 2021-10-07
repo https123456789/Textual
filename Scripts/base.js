@@ -1,7 +1,7 @@
 class View {
-	constructor(domObj) {
+	constructor(domObj, ddomObj) {
 		this.dom = domObj;
-		this.disableMesh = document.getElementById("disableInteractionsMesh");
+		this.disableMesh = ddomObj;
 	}
 	show() {
 		this.dom.style.display = "block";
@@ -13,14 +13,26 @@ class View {
 	}
 }
 class SaveView extends View {
-	constructor(domObj, ddomObj) {
-		super(domObj);
-		this.downloadDom = ddomObj;
+	constructor(domObj, ddomObj, downDomObj) {
+		super(domObj, ddomObj);
+		this.downloadDom = downDomObj;
 	}
 	show() {
 		this.dom.style.display = "block";
 		this.disableMesh.style.display = "block";
 		editor.save(this.downloadDom);
+	}
+}
+class SettingsView extends View {
+	constructor(domObj, ddomObj) {
+		super(domObj, ddomObj);
+		this.dom = domObj;
+		this.disableMesh = ddomObj;
+	}
+	show() {
+		settings.checkForUpdates();
+		this.dom.style.display = "block";
+		this.disableMesh.style.display = "block";
 	}
 }
 class PopupText {

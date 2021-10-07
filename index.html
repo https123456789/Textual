@@ -3,9 +3,11 @@
 	<head>
 		<title>Textual</title>
 		<link rel="stylesheet" href="style.css?rnd=1">
-		<!--<script>
-			location.replace("at.html");
-		</script>-->
+		<script>
+			var GLOBAL = {
+				VERSION: "Beta 1.0"
+			};
+		</script>
 	</head>
 	<body>
 		<div id="toolbar">
@@ -29,6 +31,10 @@
 			<button onclick="settingsView.hide()" class="view-close-button">Close</button>
 			<h1>Settings</h1>
 			<hr>
+			<h2>Version</h2>
+			<p>You are using version Beta 1.0.</p>
+			<h2>Updates</h2>
+			<p id="updateStatusOutput"></p>
 		</div>
 		<div id="save_view_pane" class="view">
 			<button onclick="saveView.hide()" class="view-close-button">Close</button>
@@ -38,6 +44,8 @@
 		</div>
 		<div class="disableInteractionsMesh" id="disableInteractionsMesh"></div>
 		<div id="popups"></div>
+		<!-- Scripts -->
+		<script src="Scripts/settings.js"></script>
 		<script src="Scripts/base.js"></script>
 		<script src="Scripts/main.js"></script>
 	</body>
