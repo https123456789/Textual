@@ -41,25 +41,27 @@ a {
 	right: 5vw;
 	bottom: 5vh;
 	z-index: 11;
+	animation-name: zoomToFill-bound-5;
+	animation-duration: 0.5s;
 }
 .view-close-button {
 	position: fixed;
 	right: 5vw;
 	top: 5vh;
+	height: 5vh;
 	border: none;
 	background-color: rgba(150, 150, 150, 1);
+	animation-name: zoomToFill-close-button-5;
+	animation-duration: 0.5s;
 }
 .view-close-button:hover {
 	background-color: rgba(100, 100, 100, 1);
-}
-#about_view_pane {
-}
-#settings_view_pane {
 }
 #popups {
 	position: fixed;
 	width: 60vw;
 	height: 40vh;
+	bottom: 55vh;
 	left: 20vw;
 	right: 20vw;
 	top: 5vh;
@@ -68,15 +70,20 @@ a {
 	z-index: 12;
 	text-align: center;
 	overflow-y: auto;
+	animation-name: topDownTo5;
+	animation-duration: 0.1s;
 }
 .popup-close-button {
 	border: none;
 	width:60vw;
 	position:fixed;
+	height: 5vh;
 	right:20vw;
 	left:20vw;
 	bottom:55vh;
 	background-color: rgba(150, 150, 150, 1);
+	animation-name: topDownTo5-buffered;
+	animation-duration: 0.1s;
 }
 .popup-close-button:hover {
 	background-color: rgba(100, 100, 100, 1);
@@ -96,3 +103,51 @@ a {
 	display: none;
 }
 /* Basic Classes */
+
+/* Animations */
+@keyframes topDownTo5-buffered {
+	from {
+		top: 35vh;
+	}
+	to {
+		top: 40vh;
+	}
+}
+@keyframes topDownTo5 {
+	from {
+		top: 0vh;
+		bottom: 60vh;
+	}
+	to {
+		top: 5vh;
+		bottom: 55vh;
+	}
+}
+@keyframes zoomToFill-bound-5 {
+	from {
+		width: 20vw;
+		height: 20vh;
+		left: 40vw;
+		right: 4vw;
+		top: 4vh;
+		bottom: 40vh;
+		overflow: hidden;
+	}
+	to {
+		width: 90vw;
+		height: 90vh;
+		left: 5vw;
+		right: 5vw;
+		top: 5vh;
+		bottom: 5vh;
+		overflow: auto;
+	}
+}
+@keyframes zoomToFill-close-button-5 {
+	from {
+		right: 40vw;
+	}
+	to {
+		right: 5vw;
+	}
+}
