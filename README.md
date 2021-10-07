@@ -4,7 +4,7 @@ A web based text editor.
 
 ## Releases
 
-- Beta 1.0
+- [Beta 1.0](<https://github.com/https123456789/Textual/releases/tag/Beta-1.0>)
 
 ## File Type Support
 
