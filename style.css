@@ -43,6 +43,7 @@ a {
 	z-index: 11;
 	animation-name: zoomToFill-bound-5;
 	animation-duration: 0.5s;
+	overflow-y: auto;
 }
 .view-close-button {
 	position: fixed;
@@ -104,6 +105,16 @@ a {
 }
 /* Basic Classes */
 
+.updateButton {
+	background-color: rgba(0, 255, 0, 1);
+	width: 100%;
+	border: none;
+	font-weight: bold;
+}
+.updateButton:hover {
+	background-color: rgba(0, 200, 0, 1);
+}
+
 /* Animations */
 @keyframes topDownTo5-buffered {
 	from {
@@ -141,6 +152,14 @@ a {
 		top: 5vh;
 		bottom: 5vh;
 		overflow: auto;
+	}
+}
+@keyframes shrink-bound-5 {
+	from {
+		width: 90vw;
+	}
+	to {
+		width: 20vw;
 	}
 }
 @keyframes zoomToFill-close-button-5 {

@@ -8,8 +8,16 @@ class View {
 		this.disableMesh.style.display = "block";
 	}
 	hide() {
-		this.dom.style.display = "none";
-		this.disableMesh.style.display = "none";
+		this.dom.style.animationName = "shrink-bound-5";
+		this.dom.style.animationDuration = "1s";
+		this.dom.addEventListener("animationend", function() {
+			console.log("Closing animation ended.");
+			this.dom.style.animationName = "zoomToFill-bound-5";
+			this.dom.style.animationDuration = "0.5s";
+			console.log("Animations reset.");
+			this.dom.style.display = "none";
+			this.disableMesh.style.display = "none";
+		});
 	}
 }
 class SaveView extends View {
@@ -31,6 +39,8 @@ class SettingsView extends View {
 	}
 	show() {
 		settings.checkForUpdates();
+		var versionLabel = document.getElementById("versionLabel");
+		versionLabel.innerHTML = GLOBAL.VERSION;
 		this.dom.style.display = "block";
 		this.disableMesh.style.display = "block";
 	}
