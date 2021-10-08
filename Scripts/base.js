@@ -3,23 +3,21 @@ class View {
 		this.dom = domObj;
 		this.disableMesh = ddomObj;
 	}
+	playOpenAnimation() {
+		this.dom.classList.add("viewAnimationOpen");
+		var children = this.dom.children;
+		for (var i = 0; i < children.length; i++) {
+			children[i].classList.remove("viewAnimationOpen");
+		}
+	}
 	show() {
-		this.dom.style.animationName = "zoomToFill-bound-5";
-		this.dom.style.animationDuration = "1.s";
+		this.playOpenAnimation();
 		this.dom.style.display = "block";
 		this.disableMesh.style.display = "block";
 	}
 	hide(domObj, ddomObj) {
-		this.dom.style.animationName = "shrink-bound-5";
-		this.dom.style.animationDuration = "1s";
-		this.dom.addEventListener("animationend", function() {
-			console.log("Closing animation ended.");
-			domObj.style.animationName = "zoomToFill-bound-5";
-			domObj.style.animationDuration = "0.5s";
-			console.log("Animations reset.");
-			domObj.style.display = "none";
-			ddomObj.style.display = "none";
-		});
+		domObj.style.display = "none";
+		ddomObj.style.display = "none";
 	}
 }
 class SaveView extends View {
@@ -28,6 +26,7 @@ class SaveView extends View {
 		this.downloadDom = downDomObj;
 	}
 	show() {
+		this.playOpenAnimation();
 		this.dom.style.display = "block";
 		this.disableMesh.style.display = "block";
 		editor.save(this.downloadDom);
@@ -40,6 +39,7 @@ class SettingsView extends View {
 		this.disableMesh = ddomObj;
 	}
 	show() {
+		this.playOpenAnimation();
 		settings.checkForUpdates();
 		var versionLabel = document.getElementById("versionLabel");
 		versionLabel.innerHTML = GLOBAL.VERSION;
@@ -112,5 +112,18 @@ class Popup {
 	close() {
 		this.disableMesh.style.zIndex = "10";
 		this.dom.style.display = "none";
+	}
+}
+
+/* Animations */
+
+class Animation {
+	constructor(durration) {
+		this.startTime = Date.now();
+		this.currentTime = Date.now();
+		this.durration = durration;
+	}
+	play() {
+		
 	}
 }

@@ -6,6 +6,13 @@ body {
 a {
 	color: rgb(0, 0, 0);
 }
+details > summary {
+	list-style: none;
+	font-weight: bold;
+	font-size: 24px;
+	text-align: center;
+	background-color: rgba(200, 200, 200, 0.5);
+}
 #toolbar {
 	background-color: rgba(150, 150, 150, 1);
 	height: 10vh;
@@ -41,8 +48,6 @@ a {
 	right: 5vw;
 	bottom: 5vh;
 	z-index: 11;
-	animation-name: zoomToFill-bound-5;
-	animation-duration: 0.5s;
 	overflow-y: auto;
 }
 .view-close-button {
@@ -52,8 +57,8 @@ a {
 	height: 5vh;
 	border: none;
 	background-color: rgba(150, 150, 150, 1);
-	animation-name: zoomToFill-close-button-5;
-	animation-duration: 0.5s;
+	/*animation-name: zoomToFill-close-button-5;
+	animation-duration: 0.5s;*/
 }
 .view-close-button:hover {
 	background-color: rgba(100, 100, 100, 1);
@@ -104,6 +109,10 @@ a {
 	display: none;
 }
 /* Basic Classes */
+
+.center {
+	text-align: center;
+}
 
 .updateButton {
 	background-color: rgba(0, 255, 0, 1);
@@ -169,4 +178,9 @@ a {
 	to {
 		right: 5vw;
 	}
+}
+
+.viewAnimationOpen {
+	animation-name: zoomToFill-bound-5;
+	animation-duration: 0.5s;
 }

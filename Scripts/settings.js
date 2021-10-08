@@ -1,15 +1,16 @@
 var settings = {
 	updateDom: document.getElementById("updateStatusOutput"),
+	latestVersion: null,
 	checkForUpdates: function() {
 		var xhttps = new XMLHttpRequest();
 		xhttps.addEventListener("load", function() {
 			if (this.status == 200) {
-				console.log(this.responseText);
 				if (this.responseText == GLOBAL.VERSION) {
 					settings.updateDom.innerHTML = "<p>You have the latest version.</p>";
 				} else {
+					settings.latestVersion = this.responseText;
 					var downloadLoc = "https://github.com/https123456789/Textual/raw/main/Releases/" + this.responseText + "/Textual " + this.responseText + ".zip";
-					settings.updateDom.innerHTML = "<details><summary>Update Available</summary><p>" + this.responseText + "</p><p>Download is available <a href='" + downloadLoc + "'>here</a>.</p><p>You can also download from here.</p><button onclick='settings.downloadLatestVersion()' class='updateButton'>Download</button></details>";
+					settings.updateDom.innerHTML = "<fieldset><legend><h2>Update Available</h2></legend><button onclick='settings.downloadLatestVersion()' class='updateButton'>Download " + settings.latestVersion + "</button></filedset>";
 				}
 			}
 		});
@@ -18,5 +19,16 @@ var settings = {
 	},
 	downloadLatestVersion: function() {
 		console.log("Downloading latest version...");
+		/*var xhttp = new XMLHttpRequest();
+		xhttp.addEventListener("load", function() {
+			if (this.status == 200) {
+				console.log(this.responseText);
+			} else {
+				console.log("Unable to download: " + this.status);
+			}
+		});
+		xhttp.open("GET", "https://https123456789.github.io/Releases/" + settings.latestVersion + "/" + settings.latestVersion + ".zip");
+		xhttp.send();*/
+		location.replace("https://github.com/https123456789/Textual/raw/main/Releases/" + this.latestVersion + "/Textual " + this.latestVersion + ".zip");
 	}
 }
