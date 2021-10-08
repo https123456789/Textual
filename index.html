@@ -21,14 +21,14 @@
 			Document view panes
 		-->
 		<div id="about_view_pane" class="view">
-			<button onclick="aboutView.hide()" class="view-close-button">Close</button>
+			<button onclick="aboutView.hide(document.getElementById('about_view_pane'), document.getElementById('disableInteractionsMesh'))" class="view-close-button">Close</button>
 			<h1>About</h1>
 			<hr>
 			<p>Textual is a brwoser based text editor.</p>
 			<p>Textual was created by <a href="https://github.com/https123456789">https123456789</a>. You can check out the repository on <a href="https://github.com/https123456789/Textual/">Github</a>.</p>
 		</div>
 		<div id="settings_view_pane" class="view">
-			<button onclick="settingsView.hide()" class="view-close-button">Close</button>
+			<button onclick="settingsView.hide(document.getElementById('settings_view_pane'),document.getElementById('disableInteractionsMesh'))" class="view-close-button">Close</button>
 			<h1>Settings</h1>
 			<hr>
 			<h2>Version</h2>
@@ -37,7 +37,7 @@
 			<p id="updateStatusOutput"></p>
 		</div>
 		<div id="save_view_pane" class="view">
-			<button onclick="saveView.hide()" class="view-close-button">Close</button>
+			<button onclick="saveView.hide(document.getElementById('save_view_pane'), document.getElementById('disableInteractionsMesh'))" class="view-close-button">Close</button>
 			<h1>Save</h1>
 			<hr>
 			<p>Save as a file: <span id="download_file"></span>.</p>

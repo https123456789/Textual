@@ -4,19 +4,21 @@ class View {
 		this.disableMesh = ddomObj;
 	}
 	show() {
+		this.dom.style.animationName = "zoomToFill-bound-5";
+		this.dom.style.animationDuration = "1.s";
 		this.dom.style.display = "block";
 		this.disableMesh.style.display = "block";
 	}
-	hide() {
+	hide(domObj, ddomObj) {
 		this.dom.style.animationName = "shrink-bound-5";
 		this.dom.style.animationDuration = "1s";
 		this.dom.addEventListener("animationend", function() {
 			console.log("Closing animation ended.");
-			this.dom.style.animationName = "zoomToFill-bound-5";
-			this.dom.style.animationDuration = "0.5s";
+			domObj.style.animationName = "zoomToFill-bound-5";
+			domObj.style.animationDuration = "0.5s";
 			console.log("Animations reset.");
-			this.dom.style.display = "none";
-			this.disableMesh.style.display = "none";
+			domObj.style.display = "none";
+			ddomObj.style.display = "none";
 		});
 	}
 }
