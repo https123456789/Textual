@@ -6,12 +6,18 @@ body {
 a {
 	color: rgb(0, 0, 0);
 }
+details {
+	padding: 1%;
+}
 details > summary {
 	list-style: none;
-	font-weight: bold;
 	font-size: 24px;
 	text-align: center;
-	background-color: rgba(200, 200, 200, 0.5);
+	border: 1px solid rgb(0, 0, 0);
+	height: 10vh;
+}
+details > summary:hover {
+	font-weight: bold;
 }
 #toolbar {
 	background-color: rgba(150, 150, 150, 1);
@@ -76,8 +82,8 @@ details > summary {
 	z-index: 12;
 	text-align: center;
 	overflow-y: auto;
-	animation-name: topDownTo5;
-	animation-duration: 0.1s;
+	/*animation-name: topDownTo5;
+	animation-duration: 0.1s;*/
 }
 .popup-close-button {
 	border: none;
@@ -88,8 +94,8 @@ details > summary {
 	left:20vw;
 	bottom:55vh;
 	background-color: rgba(150, 150, 150, 1);
-	animation-name: topDownTo5-buffered;
-	animation-duration: 0.1s;
+	/*animation-name: topDownTo5-buffered;
+	animation-duration: 0.1s;*/
 }
 .popup-close-button:hover {
 	background-color: rgba(100, 100, 100, 1);
@@ -183,4 +189,10 @@ details > summary {
 .viewAnimationOpen {
 	animation-name: zoomToFill-bound-5;
 	animation-duration: 0.5s;
+}
+
+.viewAnimationClose {
+	animation-name: zoomToFill-bound-5;
+	animation-duration: 0.5s;
+	animation-direction: reverse;
 }

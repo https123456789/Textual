@@ -1,6 +1,11 @@
 var settings = {
 	updateDom: document.getElementById("updateStatusOutput"),
+	themeName: "light",
 	latestVersion: null,
+	getInfo: function() {
+		this.checkForUpdates();
+		this.loadThemeInterface();
+	},
 	checkForUpdates: function() {
 		var xhttps = new XMLHttpRequest();
 		xhttps.addEventListener("load", function() {
@@ -30,5 +35,22 @@ var settings = {
 		xhttp.open("GET", "https://https123456789.github.io/Releases/" + settings.latestVersion + "/" + settings.latestVersion + ".zip");
 		xhttp.send();*/
 		location.replace("https://github.com/https123456789/Textual/raw/main/Releases/" + this.latestVersion + "/Textual " + this.latestVersion + ".zip");
+	},
+	loadThemeInterface: function() {
+		var themeLabel = document.getElementById("themeLabel");
+		var themeSample = document.getElementById("themeSample");
+		var theme = this.getTheme();
+		theme = theme.charAt(0).toUpperCase() + theme.slice(1);
+		switch (theme) {
+			case "Light":
+				break;
+		}
+		themeLabel.innerHTML = theme;
+	},
+	getTheme: function() {
+		return(this.themeName);
+	},
+	setTheme: function(theme) {
+		this.themeName = theme;
 	}
 }

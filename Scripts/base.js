@@ -1,23 +1,57 @@
 class View {
 	constructor(domObj, ddomObj) {
 		this.dom = domObj;
+		//this.dom.addEventListener("animationend", this.animationEnded(this.dom));
 		this.disableMesh = ddomObj;
 	}
+	animationEnded(dom) {
+		var animationType;
+		console.log("Dom: " + dom);
+		if (this.dom.classList.contains("viewAnimationOpen")) {
+			console.log("Open animation ended.");
+		}
+		/*for (var i = 0; i < this.dom.classList.length; i++) {
+			switch (this.dom.classList[i]) {
+				case "viewAnimationOpen":
+					console.log("Open animation ended.");
+					break;
+				case "viewAnimationClose":
+					console.log("Close animation ended.");
+					break;
+			}
+		}*/
+	}
 	playOpenAnimation() {
+		this.dom.classList.remove("viewAnimationClose");
 		this.dom.classList.add("viewAnimationOpen");
 		var children = this.dom.children;
 		for (var i = 0; i < children.length; i++) {
 			children[i].classList.remove("viewAnimationOpen");
 		}
+		this.openAnimationEnded();
 	}
-	show() {
-		this.playOpenAnimation();
+	openAnimationEnded() {
 		this.dom.style.display = "block";
 		this.disableMesh.style.display = "block";
 	}
+	show() {
+		this.playOpenAnimation();
+	}
+	playCloseAnimation() {
+		this.dom.classList.remove("viewAnimationOpen");
+		this.dom.classList.add("viewAnimationClose");
+		var children = this.dom.children;
+		for (var i = 0; i < children.length; i++) {
+			children[i].classList.remove("viewAnimationClose");
+		}
+	}
+	closeAnimationEnded() {
+		this.dom.style.display = "none";
+		this.disableMesh.style.display = "none";
+	}
 	hide(domObj, ddomObj) {
-		domObj.style.display = "none";
-		ddomObj.style.display = "none";
+		this.playCloseAnimation();
+		this.closeAnimationEnded();
 	}
 }
 class SaveView extends View {
@@ -25,11 +59,14 @@ class SaveView extends View {
 		super(domObj, ddomObj);
 		this.downloadDom = downDomObj;
 	}
-	show() {
-		this.playOpenAnimation();
+	openAnimationEnded() {
 		this.dom.style.display = "block";
 		this.disableMesh.style.display = "block";
 		editor.save(this.downloadDom);
+	}
+	show() {
+		this.playOpenAnimation();
+		this.openAnimationEnded();
 	}
 }
 class SettingsView extends View {
@@ -40,7 +77,7 @@ class SettingsView extends View {
 	}
 	show() {
 		this.playOpenAnimation();
-		settings.checkForUpdates();
+		settings.getInfo();
 		var versionLabel = document.getElementById("versionLabel");
 		versionLabel.innerHTML = GLOBAL.VERSION;
 		this.dom.style.display = "block";
