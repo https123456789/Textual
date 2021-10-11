@@ -11,13 +11,13 @@ details {
 }
 details > summary {
 	list-style: none;
+	font-weight: bold;
 	font-size: 24px;
 	text-align: center;
 	border: 1px solid rgb(0, 0, 0);
-	height: 10vh;
 }
 details > summary:hover {
-	font-weight: bold;
+	background-color: rgba(200, 200, 200, 0.5);
 }
 #toolbar {
 	background-color: rgba(150, 150, 150, 1);

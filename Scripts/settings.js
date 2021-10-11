@@ -38,11 +38,15 @@ var settings = {
 	},
 	loadThemeInterface: function() {
 		var themeLabel = document.getElementById("themeLabel");
-		var themeSample = document.getElementById("themeSample");
+		var themeSample = document.getElementById("themeSample_menuColor");
 		var theme = this.getTheme();
 		theme = theme.charAt(0).toUpperCase() + theme.slice(1);
 		switch (theme) {
 			case "Light":
+				themeSample.style.fill = 'rgb(200, 200, 200)';
+				break;
+			default:
+				themeSample.style.fill = 'rgb(255, 0, 0)';
 				break;
 		}
 		themeLabel.innerHTML = theme;

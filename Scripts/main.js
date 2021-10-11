@@ -1,7 +1,6 @@
 var aboutView = new View(document.getElementById("about_view_pane"), document.getElementById("disableInteractionsMesh"));
 var settingsView = new SettingsView(document.getElementById("settings_view_pane"), document.getElementById("disableInteractionsMesh"));
 var saveView = new SaveView(document.getElementById("save_view_pane"), document.getElementById("disableInteractionsMesh"), document.getElementById("download_file"));
-var issuesView = new View(document.getElementById("issues_view_pane"), document.getElementById("disableInteractionsMesh"));
 var popup = null;
 var editor = {
 	content: "Textual Beta 1.0",

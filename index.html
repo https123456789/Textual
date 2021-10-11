@@ -14,7 +14,6 @@
 			<button onclick="aboutView.show()">About</button>
 			<button onclick="settingsView.show()">Settings</button>
 			<button onclick="saveView.show()">Save</button>
-			<button onclick="issuesView.show()">Issues</button>
 		</div>
 		<code><div id="editor" contenteditable="true"></div>
 		</code>
@@ -42,7 +41,7 @@
 				<h3 id="themeLabel" class="center"></h3>
 				<center>
 					<svg id="themeSample" width="100px" height="100px" xmlns="http://www.w3.org/2000/svg">
-						<rect id="themeSample_menuColor" width="100%" height="100%" color="rgb(0, 0, 0)"></rect>
+						<rect id="themeSample_menuColor" width="100%" height="100%" style="fill: rgb(0, 0, 0);"></rect>
 					</svg>
 				</center>
 			</details>
@@ -52,11 +51,6 @@
 			<h1 class="center">Save</h1>
 			<hr>
 			<p>Save as a file: <span id="download_file"></span>.</p>
-		</div>
-		<div id="issues_view_pane" class="view">
-			<button onclick="issuesView.hide(document.getElementById('about_view_pane'), document.getElementById('disableInteractionsMesh'))" class="view-close-button">Close</button>
-			<h1 class="center">Report an Issue</h1>
-			<hr>
 		</div>
 		<div class="disableInteractionsMesh" id="disableInteractionsMesh"></div>
 		<div id="popups"></div>

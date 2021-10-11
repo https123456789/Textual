@@ -6,6 +6,7 @@ class Theme {
 		this.menusColor;
 	}
 	updateUI() {
+		var svg = document.getElementById("themeSample");
 		
 	}
 }
