@@ -3,22 +3,6 @@ body {
 	display: flex;
 	flex-direction: column;
 }
-a {
-	color: rgb(0, 0, 0);
-}
-details {
-	padding: 1%;
-}
-details > summary {
-	list-style: none;
-	font-weight: bold;
-	font-size: 24px;
-	text-align: center;
-	border: 1px solid rgb(0, 0, 0);
-}
-details > summary:hover {
-	background-color: rgba(200, 200, 200, 0.5);
-}
 #toolbar {
 	background-color: rgba(150, 150, 150, 1);
 	height: 10vh;
@@ -45,15 +29,6 @@ details > summary:hover {
 	line-height: 10vh;
 	background-color: rgba(150, 150, 150, 1);
 }
-#fontSizeSelect {
-	background-color: rgb(150, 150, 150);
-	border: 1px solid rgb(0, 0, 0);
-	box-shadow: 1px 1px #000000;
-}
-#fontSizeSelect > option:hover {
-	background-color: rgb(0, 0, 0);
-	box-shadow: 0 0 1px 1px #000000 inset;
-}
 #actionsBar > button {
 	border: none;
 }
@@ -68,6 +43,31 @@ details > summary:hover {
 	resize: none;
 	padding-left: 1%;
 	white-space: pre;
+}
+#fontSizeSelect {
+	background-color: rgb(150, 150, 150);
+	border: 1px solid rgb(0, 0, 0);
+	box-shadow: 1px 1px #000000;
+}
+#fontSizeSelect > option:hover {
+	background-color: rgb(0, 0, 0);
+	box-shadow: 0 0 1px 1px #000000 inset;
+}
+a {
+	color: rgb(0, 0, 0);
+}
+details {
+	padding: 1%;
+}
+details > summary {
+	list-style: none;
+	font-weight: bold;
+	font-size: 24px;
+	text-align: center;
+	border: 1px solid rgb(0, 0, 0);
+}
+details > summary:hover {
+	background-color: rgba(200, 200, 200, 0.5);
 }
 /* View Panes */
 .view {
@@ -228,7 +228,6 @@ details > summary:hover {
 	animation-name: zoomToFill-bound-5;
 	animation-duration: 0.5s;
 }
-
 .viewAnimationClose {
 	animation-name: zoomToFill-bound-5;
 	animation-duration: 0.5s;

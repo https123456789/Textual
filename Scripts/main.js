@@ -1,3 +1,7 @@
+/* Init */
+document.getElementById("fontSizeSelect").value = "12px";
+settings.updateStyles();
+
 var aboutView = new View(document.getElementById("about_view_pane"), document.getElementById("disableInteractionsMesh"));
 var settingsView = new SettingsView(document.getElementById("settings_view_pane"), document.getElementById("disableInteractionsMesh"));
 var saveView = new SaveView(document.getElementById("save_view_pane"), document.getElementById("disableInteractionsMesh"), document.getElementById("download_file"));

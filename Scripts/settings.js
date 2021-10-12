@@ -1,12 +1,38 @@
 var settings = {
 	updateDom: document.getElementById("updateStatusOutput"),
-	themeName: "light",
+	themeName: localStorage.getItem("themeName"),
 	latestVersion: null,
 	getInfo: function() {
 		this.checkForUpdates();
 		this.loadThemeInterface();
 	},
+	updateSettings: function() {
+		this.checkForUpdates();
+		this.loadThemeInterface();
+		this.updateStyles();
+	},
+	updateStyles: function() {
+		var theme = localStorage.getItem("themeName");
+		theme = theme.charAt(0).toUpperCase() + theme.slice(1);
+		var sheet = document.styleSheets[0];
+		var editorRule = sheet.cssRules[8];
+		var toolbarRule = sheet.cssRules[1];
+		var actionsbarRule = sheet.cssRules[4];
+		switch (theme) {
+			case "Light":
+				editorRule.style.backgroundColor = themes.Light.textEditorColor;
+				editorRule.style.color = themes.Light.textEditorTextColor;
+				break;
+			case "Dark":
+				editorRule.style.backgroundColor = themes.Dark.textEditorColor;
+				editorRule.style.color = themes.Dark.textEditorTextColor;
+				break;
+		}
+		console.log("Updated Settings");
+	},
 	checkForUpdates: function() {
+		var versionLabel = document.getElementById("versionLabel");
+		versionLabel.innerHTML = GLOBAL.VERSION;
 		var xhttps = new XMLHttpRequest();
 		xhttps.addEventListener("load", function() {
 			if (this.status == 200) {
@@ -29,21 +55,25 @@ var settings = {
 	loadThemeInterface: function() {
 		var themeLabel = document.getElementById("themeLabel");
 		var themeSample = document.getElementById("themeSample");
-		var menuColorSample = document.getElementById("themeSample_menuColor");
+		var menuColorSample = document.getElementById("themeSampleMenuColor");
+		var editorColorSample = document.getElementById("themeSampleEditorColor");
 		var theme = this.getTheme();
 		theme = theme.charAt(0).toUpperCase() + theme.slice(1);
 		switch (theme) {
 			case "Light":
-				menuColorSample.style.fill = 'rgb(200, 200, 200)';
+				menuColorSample.style.fill = themes.Light.menuColor;
+				editorColorSample.style.fill = themes.Light.textEditorColor;
 				break;
 			case "Dark":
-				menuColorSample.style.fill = 'rgb(100, 100, 100)';
+				menuColorSample.style.fill = themes.Dark.menuColor;
+				editorColorSample.style.fill = themes.Dark.textEditorColor;
 				break;
 			default:
 				themeSample.style.display = "none";
 				break;
 		}
 		themeLabel.innerHTML = theme;
+		document.getElementById("themeSelector").value = theme;
 	},
 	getTheme: function() {
 		return(this.themeName);
@@ -55,5 +85,6 @@ var settings = {
 	saveSettings: function() {
 		var theme = this.themeName;
 		localStorage.setItem("themeName", theme);
+		this.updateSettings();
 	}
 }
