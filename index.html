@@ -10,10 +10,23 @@
 		</script>
 	</head>
 	<body>
-		<div id="toolbar">
-			<button onclick="aboutView.show()">About</button>
-			<button onclick="settingsView.show()">Settings</button>
-			<button onclick="saveView.show()">Save</button>
+		<div class="column">
+			<div id="toolbar">
+				<button onclick="aboutView.show()">About</button>
+				<button onclick="settingsView.show()">Settings</button>
+				<button onclick="saveView.show()">Save</button>
+			</div>
+			<div id="actionsBar">
+				<div class="row">
+					<label class="center">Font Size</label>
+					<select id="fontSizeSelect">
+						<option value="12px">12px</option>
+						<option value="24px">24px</option>
+					</select>
+				</div>
+				<button>Bold</button>
+				<button>Italic</button>
+			</div>
 		</div>
 		<code><div id="editor" contenteditable="true"></div>
 		</code>
@@ -38,12 +51,25 @@
 			</details>
 			<details>
 				<summary>Theme</summary>
-				<h3 id="themeLabel" class="center"></h3>
-				<center>
-					<svg id="themeSample" width="100px" height="100px" xmlns="http://www.w3.org/2000/svg">
-						<rect id="themeSample_menuColor" width="100%" height="100%" style="fill: rgb(0, 0, 0);"></rect>
-					</svg>
-				</center>
+				<div class="row">
+					<div class="column">
+						<h3 id="themeLabel" class="center"></h3>
+						<center>
+							<svg id="themeSample" width="100px" height="100px" xmlns="http://www.w3.org/2000/svg">
+								<rect id="themeSample_menuColor" width="100%" height="100%" style="fill: rgb(0, 0, 0);"></rect>
+							</svg>
+						</center>
+					</div>
+					<div class="column">
+						<h3>Change Theme</h3>
+						<select id="themeSelector">
+							<option value="Light">Light</option>
+							<option value="Dark">Dark</option>
+						</select>
+						<br>
+						<button onclick="settings.setTheme(document.getElementById('themeSelector').value)">Save</button>
+					</div>
+				</div>
 			</details>
 		</div>
 		<div id="save_view_pane" class="view">
@@ -57,7 +83,6 @@
 		<!-- Scripts -->
 		<script src="Scripts/themes.js"></script>
 		<script src="Scripts/settings.js"></script>
-		<script src="Scripts/issues.js"></script>
 		<script src="Scripts/base.js"></script>
 		<script src="Scripts/main.js"></script>
 	</body>

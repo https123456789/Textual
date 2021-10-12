@@ -1,21 +1,8 @@
-class Theme {
-	constructor() {
-		this.menuColor;
-		this.menuColorHover;
-		this.textEditorColor;
-		this.menusColor;
-	}
-	updateUI() {
-		var svg = document.getElementById("themeSample");
-		
-	}
-}
-class LightTheme extends Theme {
-	constructor() {
-		super();
-		this.menuColor = 0x969696;
-		this.menuColorHover = 0x646464;
-		this.textEditorColor = 0xc8c8c8;
-		this.menusColor = 0xffffff;
+var themes = {
+	"Light": {
+		"menuColor": 0x969696,
+		"menuColorHover": 0x646464,
+		"textEditorColor": 0xc8c8c8,
+		"menusColor": 0xffffff
 	}
 }

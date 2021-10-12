@@ -24,29 +24,23 @@ var settings = {
 	},
 	downloadLatestVersion: function() {
 		console.log("Downloading latest version...");
-		/*var xhttp = new XMLHttpRequest();
-		xhttp.addEventListener("load", function() {
-			if (this.status == 200) {
-				console.log(this.responseText);
-			} else {
-				console.log("Unable to download: " + this.status);
-			}
-		});
-		xhttp.open("GET", "https://https123456789.github.io/Releases/" + settings.latestVersion + "/" + settings.latestVersion + ".zip");
-		xhttp.send();*/
 		location.replace("https://github.com/https123456789/Textual/raw/main/Releases/" + this.latestVersion + "/Textual " + this.latestVersion + ".zip");
 	},
 	loadThemeInterface: function() {
 		var themeLabel = document.getElementById("themeLabel");
-		var themeSample = document.getElementById("themeSample_menuColor");
+		var themeSample = document.getElementById("themeSample");
+		var menuColorSample = document.getElementById("themeSample_menuColor");
 		var theme = this.getTheme();
 		theme = theme.charAt(0).toUpperCase() + theme.slice(1);
 		switch (theme) {
 			case "Light":
-				themeSample.style.fill = 'rgb(200, 200, 200)';
+				menuColorSample.style.fill = 'rgb(200, 200, 200)';
+				break;
+			case "Dark":
+				menuColorSample.style.fill = 'rgb(100, 100, 100)';
 				break;
 			default:
-				themeSample.style.fill = 'rgb(255, 0, 0)';
+				themeSample.style.display = "none";
 				break;
 		}
 		themeLabel.innerHTML = theme;
@@ -56,5 +50,10 @@ var settings = {
 	},
 	setTheme: function(theme) {
 		this.themeName = theme;
+		this.saveSettings();
+	}, 
+	saveSettings: function() {
+		var theme = this.themeName;
+		localStorage.setItem("themeName", theme);
 	}
 }
