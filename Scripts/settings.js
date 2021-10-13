@@ -13,7 +13,7 @@ var settings = {
 	},
 	updateStyles: function() {
 		var theme = localStorage.getItem("themeName");
-		theme = theme.charAt(0).toUpperCase() + theme.slice(1);
+		//theme = theme.charAt(0).toUpperCase() + theme.slice(1);
 		var sheet = document.styleSheets[0];
 		var editorRule = sheet.cssRules[8];
 		var toolbarRule = sheet.cssRules[2];
@@ -28,6 +28,12 @@ var settings = {
 				toolbarRule.style.color = themes.Light.menuTextColor;
 				toolbarHoverRule.style.backgroundColor = themes.Light.menuColorHover;
 				actionsbarRule.style.backgroundColor = themes.Light.menuColor;
+				break;
+			case "New Light":
+				console.log("New Light selected.");
+				for (var i = 0; i < themes["New Light"].length; i++) {
+					console.log(themes["New Light"][i]);
+				}
 				break;
 			case "Dark":
 				editorRule.style.backgroundColor = themes.Dark.textEditorColor;
