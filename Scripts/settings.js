@@ -8,7 +8,7 @@ var settings = {
 	},
 	updateSettings: function() {
 		this.checkForUpdates();
-		this.loadThemeInterface();
+		this.updateThemeInterface();
 		this.updateStyles();
 	},
 	updateStyles: function() {
@@ -16,19 +16,28 @@ var settings = {
 		theme = theme.charAt(0).toUpperCase() + theme.slice(1);
 		var sheet = document.styleSheets[0];
 		var editorRule = sheet.cssRules[8];
-		var toolbarRule = sheet.cssRules[1];
-		var actionsbarRule = sheet.cssRules[4];
+		var toolbarRule = sheet.cssRules[2];
+		var toolbarHoverRule = sheet.cssRules[3];
+		var actionsbarRule = sheet.cssRules[5];
+		//var menusStyle = style.cssRules[];
 		switch (theme) {
 			case "Light":
 				editorRule.style.backgroundColor = themes.Light.textEditorColor;
 				editorRule.style.color = themes.Light.textEditorTextColor;
+				toolbarRule.style.backgroundColor = themes.Light.menuColor;
+				toolbarRule.style.color = themes.Light.menuTextColor;
+				toolbarHoverRule.style.backgroundColor = themes.Light.menuColorHover;
+				actionsbarRule.style.backgroundColor = themes.Light.menuColor;
 				break;
 			case "Dark":
 				editorRule.style.backgroundColor = themes.Dark.textEditorColor;
 				editorRule.style.color = themes.Dark.textEditorTextColor;
+				toolbarRule.style.backgroundColor = themes.Dark.menuColor;
+				toolbarRule.style.color = themes.Dark.menuTextColor;
+				toolbarHoverRule.style.backgroundColor = themes.Dark.menuColorHover;
+				actionsbarRule.style.backgroundColor = themes.Dark.menuColor;
 				break;
 		}
-		console.log("Updated Settings");
 	},
 	checkForUpdates: function() {
 		var versionLabel = document.getElementById("versionLabel");
@@ -52,28 +61,43 @@ var settings = {
 		console.log("Downloading latest version...");
 		location.replace("https://github.com/https123456789/Textual/raw/main/Releases/" + this.latestVersion + "/Textual " + this.latestVersion + ".zip");
 	},
-	loadThemeInterface: function() {
+	updateThemeInterface: function() {
 		var themeLabel = document.getElementById("themeLabel");
 		var themeSample = document.getElementById("themeSample");
 		var menuColorSample = document.getElementById("themeSampleMenuColor");
+		var menuHoverColorSample = document.getElementById("themeSampleMenuColorHover");
 		var editorColorSample = document.getElementById("themeSampleEditorColor");
+		var editorTextColorSample = document.getElementById("themeSampleEditorTextColor");
 		var theme = this.getTheme();
 		theme = theme.charAt(0).toUpperCase() + theme.slice(1);
 		switch (theme) {
 			case "Light":
 				menuColorSample.style.fill = themes.Light.menuColor;
 				editorColorSample.style.fill = themes.Light.textEditorColor;
+				editorTextColorSample.style.fill = themes.Light.textEditorTextColor;
+				menuHoverColorSample.style.fill = themes.Light.menuColorHover;
 				break;
 			case "Dark":
 				menuColorSample.style.fill = themes.Dark.menuColor;
 				editorColorSample.style.fill = themes.Dark.textEditorColor;
+				editorTextColorSample.style.fill = themes.Dark.textEditorTextColor;
+				menuHoverColorSample.style.fill = themes.Dark.menuColorHover;
 				break;
 			default:
 				themeSample.style.display = "none";
 				break;
 		}
+	},
+	loadThemeInterface: function() {
+		this.updateThemeInterface();
+		var theme = this.getTheme();
+		theme = theme.charAt(0).toUpperCase() + theme.slice(1);
 		themeLabel.innerHTML = theme;
 		document.getElementById("themeSelector").value = theme;
+		var details = document.getElementById("settings_view_pane").getElementsByTagName("details");
+		for (var i = 0; i < details.length; i++) {
+			details[i].removeAttribute("open");
+		}
 	},
 	getTheme: function() {
 		return(this.themeName);

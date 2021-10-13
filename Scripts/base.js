@@ -10,16 +10,6 @@ class View {
 		if (this.dom.classList.contains("viewAnimationOpen")) {
 			console.log("Open animation ended.");
 		}
-		/*for (var i = 0; i < this.dom.classList.length; i++) {
-			switch (this.dom.classList[i]) {
-				case "viewAnimationOpen":
-					console.log("Open animation ended.");
-					break;
-				case "viewAnimationClose":
-					console.log("Close animation ended.");
-					break;
-			}
-		}*/
 	}
 	playOpenAnimation() {
 		this.dom.classList.remove("viewAnimationClose");
