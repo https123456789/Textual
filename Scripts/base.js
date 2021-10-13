@@ -60,8 +60,7 @@ class SaveView extends View {
 		this.downloadDom = downDomObj;
 	}
 	openAnimationEnded() {
-		this.dom.style.display = "block";
-		this.disableMesh.style.display = "block";
+		super.openAnimationEnded()
 		editor.save(this.downloadDom);
 	}
 	show() {
@@ -72,16 +71,12 @@ class SaveView extends View {
 class SettingsView extends View {
 	constructor(domObj, ddomObj) {
 		super(domObj, ddomObj);
-		this.dom = domObj;
-		this.disableMesh = ddomObj;
 	}
 	show() {
 		this.playOpenAnimation();
 		settings.getInfo();
-		var versionLabel = document.getElementById("versionLabel");
-		versionLabel.innerHTML = GLOBAL.VERSION;
-		this.dom.style.display = "block";
-		this.disableMesh.style.display = "block";
+		document.getElementById("versionLabel").innerHTML = GLOBAL.VERSION;
+		super.openAnimationEnded()
 	}
 }
 class PopupText {
