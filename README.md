@@ -11,3 +11,7 @@ A web based text editor.
 | File Type | Oldest Version Supported In |
 |-----------|----------------------|
 | Text / Plain | Beta 1.0 |
+
+## Commit Data
+
+![Commit Data Chart](<https://textual-info.https12345678.repl.co/commitChart.png>)
