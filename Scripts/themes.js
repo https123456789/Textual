@@ -11,7 +11,15 @@ var themes = {
 		11
 	],
 	"RuleIndex": [
-		
+		"backgroundColor",
+		"color",
+		"backgroundColor",
+		"backgroundColor",
+		"color",
+		"backgroundColor",
+		"backgroundColor",
+		"color",
+		"backgroundColor"
 	],
 	"Light": {
 		"menuColor": "rgb(200, 200, 200)",
