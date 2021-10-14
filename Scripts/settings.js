@@ -31,12 +31,10 @@ var settings = {
 				break;
 			case "New Light":
 				for (var i = 0; i < themes["New Light"].length; i++) {
-					for (var q = 0; q < 2; q++) {
-						sheet.cssRules[themes.Model[i]].style[themes.RuleIndex[q]] = themes["New Light"][i];
-						console.log(sheet.cssRules[themes.Model[i]].style[q] + ", q:" + q);
-					}
-					sheet.cssRules[themes.Model[i]].style.backgroundColor = themes["New Light"][i];
-					console.log(sheet.cssRules[themes.Model[i]].style["0"] + ", " + i);
+					sheet.cssRules[themes.Model[i]].style[themes.RuleIndex[i]] = themes["New Light"][i];
+					console.log(sheet.cssRules[themes.Model[i]].style[themes.RuleIndex[i]] + ", i:" + i);
+					//sheet.cssRules[themes.Model[i]].style.backgroundColor = themes["New Light"][i];
+					console.log(sheet.cssRules[themes.Model[i]].style["0"] + ", i:" + i);
 				}
 				break;
 			case "Dark":
