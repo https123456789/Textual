@@ -13,39 +13,11 @@ var settings = {
 	},
 	updateStyles: function() {
 		var theme = localStorage.getItem("themeName");
-		//theme = theme.charAt(0).toUpperCase() + theme.slice(1);
-		var sheet = document.styleSheets[0];
-		var editorRule = sheet.cssRules[8];
-		var toolbarRule = sheet.cssRules[2];
-		var toolbarHoverRule = sheet.cssRules[3];
-		var actionsbarRule = sheet.cssRules[5];
-		//var menusStyle = style.cssRules[];
-		switch (theme) {
-			case "Light":
-				editorRule.style.backgroundColor = themes.Light.textEditorColor;
-				editorRule.style.color = themes.Light.textEditorTextColor;
-				toolbarRule.style.backgroundColor = themes.Light.menuColor;
-				toolbarRule.style.color = themes.Light.menuTextColor;
-				toolbarHoverRule.style.backgroundColor = themes.Light.menuColorHover;
-				actionsbarRule.style.backgroundColor = themes.Light.menuColor;
-				break;
-			case "New Light":
-				for (var i = 0; i < themes["New Light"].length; i++) {
-					sheet.cssRules[themes.Model[i]].style[themes.RuleIndex[i]] = themes["New Light"][i];
-					console.log(sheet.cssRules[themes.Model[i]].style[themes.RuleIndex[i]] + ", i:" + i);
-					//sheet.cssRules[themes.Model[i]].style.backgroundColor = themes["New Light"][i];
-					console.log(sheet.cssRules[themes.Model[i]].style["0"] + ", i:" + i);
-				}
-				break;
-			case "Dark":
-				editorRule.style.backgroundColor = themes.Dark.textEditorColor;
-				editorRule.style.color = themes.Dark.textEditorTextColor;
-				toolbarRule.style.backgroundColor = themes.Dark.menuColor;
-				toolbarRule.style.color = themes.Dark.menuTextColor;
-				toolbarHoverRule.style.backgroundColor = themes.Dark.menuColorHover;
-				actionsbarRule.style.backgroundColor = themes.Dark.menuColor;
-				break;
+		var sheet = document.styleSheets[1];
+		for (var i = 0; i < themes[theme].length; i++) {
+			sheet.cssRules[themes.Model[i]].style[themes.RuleIndex[i]] = themes[theme][i];
 		}
+		document.getElementById("themeLabel").innerHTML = theme;
 	},
 	checkForUpdates: function() {
 		var versionLabel = document.getElementById("versionLabel");
@@ -78,25 +50,7 @@ var settings = {
 		var editorTextColorSample = document.getElementById("themeSampleEditorTextColor");
 		var theme = this.getTheme();
 		theme = theme.charAt(0).toUpperCase() + theme.slice(1);
-		switch (theme) {
-			case "Light":
-				menuColorSample.style.fill = themes.Light.menuColor;
-				editorColorSample.style.fill = themes.Light.textEditorColor;
-				editorTextColorSample.style.fill = themes.Light.textEditorTextColor;
-				menuHoverColorSample.style.fill = themes.Light.menuColorHover;
-				break;
-			case "New Light":
-				break;
-			case "Dark":
-				menuColorSample.style.fill = themes.Dark.menuColor;
-				editorColorSample.style.fill = themes.Dark.textEditorColor;
-				editorTextColorSample.style.fill = themes.Dark.textEditorTextColor;
-				menuHoverColorSample.style.fill = themes.Dark.menuColorHover;
-				break;
-			default:
-				themeSample.style.display = "none";
-				break;
-		}
+		themeSample.style.display = "none";
 	},
 	loadThemeInterface: function() {
 		this.updateThemeInterface();

@@ -49,3 +49,17 @@ var updateLoop = setInterval(update, 100);
 function update() {
 	editor.update();
 }
+
+function firstRun() {
+	var popupText = new PopupText({
+		"header": "First Run!",
+		"body": "<p>It is your first run!</p>",
+		"footer": "Need help? Email me at <a href='mailto:textualemail@gmail.com'>textualemail@gmail.com</a>"
+	});
+	popup = new Popup(document.getElementById("popups"), document.getElementById("disableInteractionsMesh"), popupText.parse(), waitForInput=false, disableMeshHide=true);
+}
+
+function factoryReset() {
+	localStorage.removeItem("firstRun");
+	localStorage.setItem("themeName", "Sky");
+}

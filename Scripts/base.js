@@ -98,9 +98,10 @@ class PopupText {
 	}
 }
 class Popup {
-	constructor(domObj, disableMeshObj, message, waitForInput=false, inputObjects={}) {
+	constructor(domObj, disableMeshObj, message, waitForInput=false, inputObjects={}, disableMeshHide=true) {
 		this.dom = domObj;
 		this.disableMesh = disableMeshObj;
+		this.disableMeshHide = disableMeshHide;
 		this.message = message;
 		this.closeButton = 	"<button id='popupDismissButton' class='popup-close-button'>Close</button>";
 		this.wait = waitForInput;
@@ -117,6 +118,7 @@ class Popup {
 		this.dom.innerHTML = this.message + this.closeButton;
 		var dismissButton = document.getElementById("popupDismissButton");
 		dismissButton.addEventListener("click", function() {
+			console.log("Closing...\nStaus:\n\tWait: " + this.wait);
 			if (popup.wait) {
 				for (var inputObject in this.inputObjects) {
 					this.values[inputObject.index] = document.getElementById(inputObject.dom);
@@ -132,7 +134,13 @@ class Popup {
 		});
 	}
 	close() {
-		this.disableMesh.style.zIndex = "10";
+		console.log(this.disableMeshHide);
+		if (this.disableMeshHide) {
+			this.disableMesh.style.display = "none";
+			this.disableMesh.style.zIndex = "10";
+		} else {
+			this.disableMesh.style.zIndex = "10";
+		}
 		this.dom.style.display = "none";
 	}
 }
