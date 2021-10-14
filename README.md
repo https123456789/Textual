@@ -15,3 +15,5 @@ A web based text editor.
 ## Commit Data
 
 ![Commit Data Chart](<https://textual-info.https12345678.repl.co/commitChart.png>)
+![File Change Chart](<https://textual-info.https12345678.repl.co/ad.png>)
+![File Change Chart](<https://textual-info.https12345678.repl.co/pie.png>)
