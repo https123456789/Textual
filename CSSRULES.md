@@ -4,6 +4,8 @@
 
 ### Reserved Positions
 
+#### Rule Places
+
 | Index | Description |
 |-------|--------|
 | 0 | Setup for body. |
@@ -11,6 +13,14 @@
 | 4-7 | Actions bar style. |
 | 8 | Editor style. |
 | 9-10 | Select style. |
+| 11 | View Style. |
+
+#### Property Places
+
+| Index | Property |
+|-------|----------|
+| 0 | background-color |
+| 1 | color |
 
 ### Style Layout
 
@@ -19,8 +29,8 @@
 - Actions bar
 - Editor
 - Select
-- General Style (tag names)
 - View
+- General Style (tag names)
 - Popups
 - Disable Mesh
 - Basic Classes

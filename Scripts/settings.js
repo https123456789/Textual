@@ -30,9 +30,12 @@ var settings = {
 				actionsbarRule.style.backgroundColor = themes.Light.menuColor;
 				break;
 			case "New Light":
-				console.log("New Light selected.");
 				for (var i = 0; i < themes["New Light"].length; i++) {
-					console.log(themes["New Light"][i]);
+					for (var q = 0; q < 2; q++) {
+						
+					}
+					sheet.cssRules[themes.Model[i]].style.backgroundColor = themes["New Light"][i];
+					console.log(sheet.cssRules[themes.Model[i]].style["0"] + ", " + i);
 				}
 				break;
 			case "Dark":
@@ -82,6 +85,8 @@ var settings = {
 				editorColorSample.style.fill = themes.Light.textEditorColor;
 				editorTextColorSample.style.fill = themes.Light.textEditorTextColor;
 				menuHoverColorSample.style.fill = themes.Light.menuColorHover;
+				break;
+			case "New Light":
 				break;
 			case "Dark":
 				menuColorSample.style.fill = themes.Dark.menuColor;

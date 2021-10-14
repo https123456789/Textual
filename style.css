@@ -4,16 +4,18 @@ body {
 	flex-direction: column;
 }
 #toolbar {
-	background-color: rgba(150, 150, 150, 1);
+	background-color: rgb(150, 150, 150);
+	color: rgb(0, 0, 0);
 	height: 10vh;
 	display: flex;
 	flex-direction: row;
 }
 #toolbar > * {
+	background-color: rgba(150, 150, 150, 1);
+	color: rgb(0, 0, 0);
 	height: 100%;
 	flex: 1;
 	border: none;
-	background-color: rgba(150, 150, 150, 1);
 }
 #toolbar > *:hover {
 	background-color: rgba(100, 100, 100, 1);
@@ -24,10 +26,10 @@ body {
 	height: 10vh;
 }
 #actionsBar > * {
+	background-color: rgba(150, 150, 150, 1);
 	flex: 1;
 	height: 100%;
 	line-height: 10vh;
-	background-color: rgba(150, 150, 150, 1);
 }
 #actionsBar > button {
 	border: none;
@@ -54,8 +56,8 @@ body {
 	box-shadow: 0 0 1px 1px #000000 inset;
 }
 .view {
-	display: none;
 	background-color: rgba(255, 255, 255, 1);
+	display: none;
 	padding: 1%;
 	position: fixed;
 	top: 5vh;
@@ -83,12 +85,12 @@ details > summary:hover {
 }
 /* View Panes */
 .view-close-button {
+	background-color: rgba(150, 150, 150, 1);
 	position: fixed;
 	right: 5vw;
 	top: 5vh;
 	height: 5vh;
 	border: none;
-	background-color: rgba(150, 150, 150, 1);
 	/*animation-name: zoomToFill-close-button-5;
 	animation-duration: 0.5s;*/
 }
@@ -96,6 +98,7 @@ details > summary:hover {
 	background-color: rgba(100, 100, 100, 1);
 }
 #popups {
+	background-color: rgba(255, 255, 255, 1);
 	position: fixed;
 	width: 60vw;
 	height: 40vh;
@@ -103,7 +106,6 @@ details > summary:hover {
 	left: 20vw;
 	right: 20vw;
 	top: 5vh;
-	background-color: rgba(255, 255, 255, 1);
 	display: none;
 	z-index: 12;
 	text-align: center;
@@ -112,6 +114,7 @@ details > summary:hover {
 	animation-duration: 0.1s;*/
 }
 .popup-close-button {
+	background-color: rgba(150, 150, 150, 1);
 	border: none;
 	width:60vw;
 	position:fixed;
@@ -119,7 +122,6 @@ details > summary:hover {
 	right:20vw;
 	left:20vw;
 	bottom:55vh;
-	background-color: rgba(150, 150, 150, 1);
 	/*animation-name: topDownTo5-buffered;
 	animation-duration: 0.1s;*/
 }
