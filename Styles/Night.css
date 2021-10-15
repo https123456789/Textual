@@ -2,14 +2,14 @@
 	--name: Sky
 }
 .toolbar {
-	background-color: rgb(50, 200, 255);
+	background-color: rgb(100, 100, 100);
 	color: rgb(0, 0, 0);
 	height: 10vh;
 	display: flex;
 	flex-direction: row;
 }
 .toolbar > * {
-	background-color: rgba(150, 150, 150, 1);
+	background-color: rgb(100, 100, 100);
 	color: rgb(0, 0, 0);
 	height: 100%;
 	flex: 1;
@@ -46,5 +46,5 @@
 
 }
 #themeSample {
-	filter: invert(74%) sepia(17%) saturate(6358%) hue-rotate(164deg) brightness(100%) contrast(103%);
+	
 }

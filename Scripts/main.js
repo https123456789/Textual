@@ -71,6 +71,6 @@ function firstRun() {
 
 function factoryReset() {
 	localStorage.removeItem("firstRun");
-	localStorage.setItem("themeName", "Sky");
+	localStorage.setItem("themeName", DEFAULTS.THEME);
 	location.reload();
 }

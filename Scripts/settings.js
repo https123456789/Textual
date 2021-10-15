@@ -43,14 +43,14 @@ var settings = {
 	},
 	updateThemeInterface: function() {
 		var themeLabel = document.getElementById("themeLabel");
-		var themeSample = document.getElementById("themeSample");
-		var menuColorSample = document.getElementById("themeSampleMenuColor");
-		var menuHoverColorSample = document.getElementById("themeSampleMenuColorHover");
-		var editorColorSample = document.getElementById("themeSampleEditorColor");
-		var editorTextColorSample = document.getElementById("themeSampleEditorTextColor");
+		var themeSelect = document.getElementById("themeSelector");
 		var theme = this.getTheme();
 		theme = theme.charAt(0).toUpperCase() + theme.slice(1);
-		themeSample.style.display = "none";
+		var opts = "";
+		for (var i = 0; i < themes.Themes.length; i++) {
+			opts = opts.concat("<option value='" + themes.Themes[i] + "'>" + themes.Themes[i] + "</option>");
+		}
+		themeSelect.innerHTML = opts;
 	},
 	loadThemeInterface: function() {
 		this.updateThemeInterface();
