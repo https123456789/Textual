@@ -51,7 +51,7 @@ class SaveView extends View {
 	}
 	openAnimationEnded() {
 		super.openAnimationEnded()
-		editor.save(this.downloadDom);
+		//editor.save(this.downloadDom);
 	}
 	show() {
 		this.playOpenAnimation();
@@ -118,30 +118,10 @@ class Popup {
 		this.dom.innerHTML = this.message + this.closeButton;
 		var dismissButton = document.getElementById("popupDismissButton");
 		dismissButton.addEventListener("click", function() {
-			console.log("Closing...\nStaus:\n\tWait: " + this.wait);
-			if (popup.wait) {
-				for (var inputObject in this.inputObjects) {
-					this.values[inputObject.index] = document.getElementById(inputObject.dom);
-				}
-				if (popup.value == "") {
-					return;
-				} else {
-					popup.close();
-				}
-			} else {
-				popup.close();
-			}
+			document.getElementById("disableInteractionsMesh").style.display = "none";
+			document.getElementById("disableInteractionsMesh").style.zIndex = "10";
+			document.getElementById("popups").style.display = "none";	
 		});
-	}
-	close() {
-		console.log(this.disableMeshHide);
-		if (this.disableMeshHide) {
-			this.disableMesh.style.display = "none";
-			this.disableMesh.style.zIndex = "10";
-		} else {
-			this.disableMesh.style.zIndex = "10";
-		}
-		this.dom.style.display = "none";
 	}
 }
 

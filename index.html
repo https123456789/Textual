@@ -6,7 +6,7 @@
 		<link rel="stylesheet" href="Styles/Sky.css?rnd=1">
 		<script>
 			var GLOBAL = {
-				VERSION: "Beta 0.0",
+				VERSION: "Beta 1.0",
 			};
 		</script>
 	</head>
@@ -36,7 +36,7 @@
 			<button onclick="aboutView.hide(document.getElementById('about_view_pane'), document.getElementById('disableInteractionsMesh'))" class="view-close-button close-button">Close</button>
 			<h1 class="center">About</h1>
 			<hr>
-			<p>Textual is a brwoser based text editor.</p>
+			<p>Textual is a browser based text editor.</p>
 			<p>Textual was created by <a href="https://github.com/https123456789">https123456789</a>. You can check out the repository on <a href="https://github.com/https123456789/Textual/">Github</a>.</p>
 		</div>
 		<div id="settings_view_pane" class="view">
@@ -86,14 +86,22 @@
 			</details>
 			<details>
 				<summary>Factory Reset</summary>
-				<button onclick="factoryReset()">Factory Reset</button>
+				<button onclick="factoryReset()" class="button-warning fill-w">Factory Reset</button>
 			</details>
 		</div>
 		<div id="save_view_pane" class="view">
 			<button onclick="saveView.hide(document.getElementById('save_view_pane'), document.getElementById('disableInteractionsMesh'))" class="view-close-button close-button">Close</button>
 			<h1 class="center">Save</h1>
 			<hr>
-			<p>Save as a file: <span id="download_file"></span>.</p>
+			<div>
+				<p>Save as a file:</p>
+				<button onclick="editor.save()">Save</button>
+			</div>
+			<div>
+				<p>Export as:</p>
+				<select id='popup_input'><option value='text/plain'>Plain Text</option></select>
+				<button onclick="editor.exportAs()">Export</button>
+			</div>
 		</div>
 		<div class="disableInteractionsMesh" id="disableInteractionsMesh"></div>
 		<div id="popups"></div>

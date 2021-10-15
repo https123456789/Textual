@@ -24,11 +24,20 @@ var editor = {
 		this.formattedContent = result;
 	},
 	save: function(dom) {
-		var popupText = new PopupText({
-			header: "Select File Type:",
-			body: "<select id='popup_input'><option value='text/plain'>Plain Text</option></select>"
+		var content = this.content;
+		var fileType = "text/plain";
+		var blob = new Blob([content], {
+			type: fileType
 		});
-		popup = new Popup(document.getElementById("popups"), document.getElementById("disableInteractionsMesh"), popupText.parse(), waitForInput=false);
+		var link = document.createElement("a");
+		link.download = "file.txul";
+		link.href = window.URL.createObjectURL(blob);
+		link.innerHTML = "Download";
+		link.click();
+		//dom.innerHTML = "";
+		//dom.innerHTML += "<a href='" + link + "' download='file.txul' hidden>Download</a>";
+	},
+	exportAs: function() {
 		var content = this.formattedContent;
 		var fileType = document.getElementById("popup_input").value;
 		var blob = new Blob([content], {
@@ -38,8 +47,9 @@ var editor = {
 		link.download = "file.txt";
 		link.href = window.URL.createObjectURL(blob);
 		link.innerHTML = "Download";
-		dom.innerHTML = "";
-		dom.innerHTML += "<a href='" + link + "' download='file.html'>Download</a>";
+		link.click();
+		//dom.innerHTML = "";
+		//dom.innerHTML += "<a href='" + link + "' download='file.txt' hidden>Download</a>";
 	}
 }
 
@@ -53,8 +63,8 @@ function update() {
 function firstRun() {
 	var popupText = new PopupText({
 		"header": "First Run!",
-		"body": "<p>It is your first run!</p>",
-		"footer": "Need help? Email me at <a href='mailto:textualemail@gmail.com'>textualemail@gmail.com</a>"
+		"body": "<p>It is your first run!</p><p>Need help? Email me at <a href='mailto:textualemail@gmail.com'>textualemail@gmail.com</a></p>",
+		"footer": "Developer? Check out the <a href='https://github.com/https123456789/Textual/'>Github Repo</a>."
 	});
 	popup = new Popup(document.getElementById("popups"), document.getElementById("disableInteractionsMesh"), popupText.parse(), waitForInput=false, disableMeshHide=true);
 }
@@ -62,4 +72,5 @@ function firstRun() {
 function factoryReset() {
 	localStorage.removeItem("firstRun");
 	localStorage.setItem("themeName", "Sky");
+	location.reload();
 }
