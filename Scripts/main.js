@@ -34,8 +34,6 @@ var editor = {
 		link.href = window.URL.createObjectURL(blob);
 		link.innerHTML = "Download";
 		link.click();
-		//dom.innerHTML = "";
-		//dom.innerHTML += "<a href='" + link + "' download='file.txul' hidden>Download</a>";
 	},
 	exportAs: function() {
 		var content = this.formattedContent;
@@ -48,8 +46,6 @@ var editor = {
 		link.href = window.URL.createObjectURL(blob);
 		link.innerHTML = "Download";
 		link.click();
-		//dom.innerHTML = "";
-		//dom.innerHTML += "<a href='" + link + "' download='file.txt' hidden>Download</a>";
 	}
 }
 
@@ -61,6 +57,7 @@ function update() {
 }
 
 function firstRun() {
+	localStorage.setItem("themeName", DEFAULTS.THEME);
 	var popupText = new PopupText({
 		"header": "First Run!",
 		"body": "<p>It is your first run!</p><p>Need help? Email me at <a href='mailto:textualemail@gmail.com'>textualemail@gmail.com</a></p>",
