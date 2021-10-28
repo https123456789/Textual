@@ -90,7 +90,10 @@
 			</div>
 			<div>
 				<p>Export as:</p>
-				<select id='popup_input'><option value='text/plain'>Plain Text</option></select>
+				<select id='fileExportTypeinput'>
+					<option value='text/plain'>Plain Text</option>
+					<option value="text/html">HTML</option>
+				</select>
 				<button onclick="editor.exportAs()">Export</button>
 			</div>
 		</div>
@@ -103,6 +106,7 @@
 		</div>
 		<script src="Scripts/settings.js"></script>
 		<script src="Scripts/base.js"></script>
+		<script src="Scripts/fileExport.js"></script>
 		<script src="Scripts/main.js"></script>
 		<script>
 			// Load defaults

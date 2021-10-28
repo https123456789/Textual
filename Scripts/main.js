@@ -20,7 +20,7 @@ var editor = {
 	formatWhiteSpace: function() {
 		var content = this.content;
 		var result = content.replaceAll("<div>", "\n");
-		result = result.replaceAll("</div>", "")
+		result = result.replaceAll("</div>", "");
 		this.formattedContent = result;
 	},
 	save: function(dom) {
@@ -36,16 +36,23 @@ var editor = {
 		link.click();
 	},
 	exportAs: function() {
-		var content = this.formattedContent;
-		var fileType = document.getElementById("popup_input").value;
-		var blob = new Blob([content], {
-			type: fileType
-		});
-		var link = document.createElement("a");
-		link.download = "file.txt";
-		link.href = window.URL.createObjectURL(blob);
-		link.innerHTML = "Download";
-		link.click();
+		var exportType = document.getElementById("fileExportTypeinput").value;
+		var exporter;
+		switch (exportType) {
+			case "text/plain":
+				exporter = new PlainTextExporter({
+					"name": "doc",
+					"extension": "txt"
+				}, this.content);
+				break;
+			case "text/html":
+				exporter = new HTMLExporter({
+					"name": "doc",
+					"extension": "html"
+				}, this.content);
+				break;
+		}
+		exporter.exportToFile();
 	}
 }
 

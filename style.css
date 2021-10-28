@@ -86,6 +86,7 @@ details > summary:hover {
 	right: 5vw;
 	top: 5vh;
 	height: 5vh;
+	min-height: 2em;
 	border: none;
 }
 .view-close-button:hover {
