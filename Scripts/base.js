@@ -25,20 +25,8 @@ class View {
 		this.dom.style.display = "block";
 		this.disableMesh.style.display = "block";
 	}
-	loadContent(self) {
-		var contentRequest = new XMLHttpRequest();
-		contentRequest.addEventListener("load", function() {
-			if (this.status == 200) {
-				self.contentDom.innerHTML = this.responseText;
-				self.contentDom.classList.remove("spinner");
-			}
-		});
-		contentRequest.open("GET", "Resources/Content/Views/" + self.name + ".html");
-		contentRequest.send();
-	}
 	show() {
 		this.playOpenAnimation();
-		this.loadContent(this);
 	}
 	playCloseAnimation() {
 		this.dom.classList.remove("viewAnimationOpen");
@@ -64,7 +52,6 @@ class SaveView extends View {
 	}
 	show() {
 		this.playOpenAnimation();
-		this.loadContent(this);
 	}
 }
 class SettingsView extends View {
@@ -73,7 +60,6 @@ class SettingsView extends View {
 	}
 	show() {
 		this.playOpenAnimation();
-		//this.loadContent(this);
 		settings.getInfo();
 		document.getElementById("versionLabel").innerHTML = GLOBAL.VERSION;
 	}

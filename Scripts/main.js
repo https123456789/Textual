@@ -33,10 +33,6 @@ var editor = {
 	dom: document.getElementById("editor"),
 	init: function() {
 		this.dom.innerHTML = this.content;
-		for (var i = 0; i < views.length; i++) {
-			views[i].loadContent(views[i]);
-			//views[i].hide();
-		}
 		settings.updateStyles();
 	},
 	update: function() {
