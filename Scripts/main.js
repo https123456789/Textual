@@ -1,10 +1,31 @@
 /* Init */
+var allViewsContentLoaded = false;
 document.getElementById("fontSizeSelect").value = "12px";
-settings.updateStyles();
 
-var aboutView = new View(document.getElementById("about_view_pane"), document.getElementById("disableInteractionsMesh"));
-var settingsView = new SettingsView(document.getElementById("settings_view_pane"), document.getElementById("disableInteractionsMesh"));
-var saveView = new SaveView(document.getElementById("save_view_pane"), document.getElementById("disableInteractionsMesh"), document.getElementById("download_file"));
+var aboutView = new View(
+	document.getElementById("about_view_pane"),
+	document.getElementById("disableInteractionsMesh"),
+	document.getElementById("about_view_pane_content"),
+	"about"
+);
+var settingsView = new SettingsView(
+	document.getElementById("settings_view_pane"),
+	document.getElementById("disableInteractionsMesh"),
+	document.getElementById("settings_view_pane_content"),
+	"settings"
+);
+var saveView = new SaveView(
+	document.getElementById("save_view_pane"),
+	document.getElementById("disableInteractionsMesh"),
+	document.getElementById("download_file"),
+	document.getElementById("save_view_pane_content"),
+	"save"
+);
+var views = [
+	aboutView,
+	settingsView,
+	saveView
+];
 var popup = null;
 var editor = {
 	content: "Textual Beta 1.0",
@@ -12,6 +33,11 @@ var editor = {
 	dom: document.getElementById("editor"),
 	init: function() {
 		this.dom.innerHTML = this.content;
+		for (var i = 0; i < views.length; i++) {
+			views[i].loadContent(views[i]);
+			//views[i].hide();
+		}
+		settings.updateStyles();
 	},
 	update: function() {
 		this.content = this.dom.innerHTML;

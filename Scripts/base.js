@@ -1,8 +1,9 @@
 class View {
-	constructor(domObj, ddomObj) {
+	constructor(domObj, ddomObj, cdomObj, name) {
 		this.dom = domObj;
-		//this.dom.addEventListener("animationend", this.animationEnded(this.dom));
+		this.contentDom = cdomObj;
 		this.disableMesh = ddomObj;
+		this.name = name;
 	}
 	animationEnded(dom) {
 		var animationType;
@@ -24,8 +25,20 @@ class View {
 		this.dom.style.display = "block";
 		this.disableMesh.style.display = "block";
 	}
+	loadContent(self) {
+		var contentRequest = new XMLHttpRequest();
+		contentRequest.addEventListener("load", function() {
+			if (this.status == 200) {
+				self.contentDom.innerHTML = this.responseText;
+				self.contentDom.classList.remove("spinner");
+			}
+		});
+		contentRequest.open("GET", "Resources/Content/Views/" + self.name + ".html");
+		contentRequest.send();
+	}
 	show() {
 		this.playOpenAnimation();
+		this.loadContent(this);
 	}
 	playCloseAnimation() {
 		this.dom.classList.remove("viewAnimationOpen");
@@ -45,28 +58,24 @@ class View {
 	}
 }
 class SaveView extends View {
-	constructor(domObj, ddomObj, downDomObj) {
-		super(domObj, ddomObj);
+	constructor(domObj, ddomObj, downDomObj, cdomObj) {
+		super(domObj, ddomObj, cdomObj);
 		this.downloadDom = downDomObj;
-	}
-	openAnimationEnded() {
-		super.openAnimationEnded()
-		//editor.save(this.downloadDom);
 	}
 	show() {
 		this.playOpenAnimation();
-		this.openAnimationEnded();
+		this.loadContent(this);
 	}
 }
 class SettingsView extends View {
-	constructor(domObj, ddomObj) {
-		super(domObj, ddomObj);
+	constructor(domObj, ddomObj, cdomObj) {
+		super(domObj, ddomObj, cdomObj);
 	}
 	show() {
 		this.playOpenAnimation();
+		//this.loadContent(this);
 		settings.getInfo();
 		document.getElementById("versionLabel").innerHTML = GLOBAL.VERSION;
-		super.openAnimationEnded()
 	}
 }
 class PopupText {
