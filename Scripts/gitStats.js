@@ -2,31 +2,29 @@ function getContribsFor(username, callback) {
 	var ret = {
 
 	}
-	var branches = {
-		"count": 0,
-		"shas": [
-
-		]
-	}
 	checkIfGAPICallsExist(function(useCached) {
 		console.log(useCached);
 		if (useCached) {
 			var req = new XMLHttpRequest();
 			req.addEventListener("load", function() {
 				if (this.status == 200) {
-					var authorCount = 0;
-					var json = JSON.parse(this.responseText);
-					for (var i = 0; i < json.length; i++) {
-						if (json[i]["author"]["login"] == username) {
-							authorCount += 1;
+					var res = JSON.parse(this.responseText);
+					var numberOfCommiters = res.length;
+					var totalCommits = 0;
+					console.log(numberOfCommiters);
+					for (var i = 0; i < numberOfCommiters; i++) {
+						if (res[i].author.login == username) {
+							ret.count = res[i].total;
 						}
+						totalCommits += res[i].total;
 					}
-					ret.count = authorCount;
-					ret.percent = Math.round((ret.count / json.length) * 100) / 100;
+					var percent = Math.round((ret.count / totalCommits) * 1000) / 1000;
+					console.log(res.percent);
+					ret.percent = percent;
 					callback(ret);
 				}
 			});
-			req.open("GET", "https://api.github.com/repos/https123456789/Textual/commits?type=all");
+			req.open("GET", "https://api.github.com/repos/https123456789/Textual/stats/contributors");
 			req.send();
 		} else {
 			// Use Cached API Data
