@@ -94,6 +94,7 @@ var settings = {
 			opts = opts.concat("<option value='" + themes.Themes[i] + "'>" + themes.Themes[i] + "</option>");
 		}
 		themeSelect.innerHTML = opts;
+		themeSelect.value = localStorage.getItem("themeName");
 	},
 	loadThemeInterface: function() {
 		this.updateThemeInterface();
