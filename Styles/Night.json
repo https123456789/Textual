@@ -1,0 +1,13 @@
+{
+	"Style": {
+		"toolbar-bg": "rgb(50, 50, 50)",
+		"toolbar-color": "rgb(255, 255, 255)",
+		"toolbar-child-bg": "rgb(50, 50, 50)",
+		"toolbar-child-color": "rgb(255, 255, 255)",
+		"toolbar-child-hover-bg": "rgb(100, 100, 100)",
+		"font-size-select-bg": "rgb(50, 50, 50)",
+		"font-size-select-color": "rgb(255, 255, 255)",
+		"editor-bg": "rgb(10, 10, 10)",
+		"editor-color": "rgb(255, 255, 255)"
+	}
+}
