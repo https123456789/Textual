@@ -2,9 +2,13 @@
 <html>
 	<head>
 		<title>Textual</title>
+		<!-- Main Stylesheet -->
 		<link rel="stylesheet" href="style.css?rnd=1">
-		<link id="styleSheet" rel="stylesheet" href="Styles/Sky.css?rnd=1">
+		<!-- Theme Stylesheet -->
+		<link rel="stylesheet" href="ui.css?rnd=1">
+		<!-- Utilities -->
 		<link rel="stylesheet" href="spinner.css?rnd=1">
+		<link rel="stylesheet" href="pbar.css?rnd=1">
 		<script>
 			var GLOBAL = {
 				VERSION: "Beta 1.0"
@@ -13,6 +17,8 @@
 				THEME: "Sky"
 			};
 		</script>
+		<!-- Needed here because it is used in the DOM -->
+		<script src="Scripts/gitStats.js"></script>
 	</head>
 	<body>
 		<div class="column">
@@ -47,41 +53,85 @@
 			<hr>
 			<h3 class="center">Platforms</h3>
 			<div class="row">
-				<figure class="center">
-					<figcaption>
-						<a href="https://github.com">Github</a>
-					</figcaption>
-					<img src="Resources/Images/Views/About/github_logo.png" height="50vh" alt="Github Logo">
-				</figure>
-				<figure class="center">
-					<figcaption>
-						<a href="https://replit.com">Replit</a>
-					</figcaption>
-					<img src="Resources/Images/Views/About/replit_logo.png" height="50vh" alt="Replit Logo">
-				</figure>
+				<div class="center">
+					<figure>
+						<figcaption>
+							Github
+						</figcaption>
+						<a href="https://github.com">
+							<img src="Resources/Images/Views/About/github_logo.png" height="50vh" alt="Github Logo">
+						</a>
+					</figure>
+					<p>Provided source control and code collaboration.</p>
+				</div>
+				<div class="center">
+					<figure>
+						<figcaption>
+							Replit
+						</figcaption>
+						<a href="https://replit.com">
+							<img src="Resources/Images/Views/About/replit_logo.png" height="50vh" alt="Replit Logo">
+						</a>
+					</figure>
+					<p>Provided a easy to use IDE for development.</p>
+				</div>
 			</div>
 			<h3 class="center">People</h3>
 			<div class="row">
 				<div class="center">
 					<figure>
 						<figcaption>
-							<a href="https://github.com/https123456789">https123456789</a>
+							https123456789
 						</figcaption>
-						<img src="https://avatars.githubusercontent.com/https123456789" height="50vh">
+						<a href="https://github.com/https123456789">
+							<img src="https://avatars.githubusercontent.com/https123456789" height="50vh">
+						</a>
 					</figure>
+					<div class="progressBar">
+						<div id="contributors-people-https123456789-pbar">
+						</div>
+					</div>
+					<p id="contributors-people-https123456789"></p>
+					<script>
+						getContribsFor("https123456789", function(data) {
+							var dom = document.getElementById("contributors-people-https123456789");
+							var pbar = document.getElementById("contributors-people-https123456789-pbar");
+							dom.innerHTML = data.count + " - " + data.percent + "%";
+							pbar.style.width = (data.percent * 100) + "%";
+						});
+					</script>
 				</div>
 				<div class="center">
 					<figure>
 						<figcaption>
-							<a href="https://github.com/LGgameLAB">LGgameLAB</a>
+							LGgameLAB
 						</figcaption>
-						<img src="https://avatars.githubusercontent.com/LGgameLAB" height="50vh">
+						<a href="https://github.com/LGgameLAB">
+							<img src="https://avatars.githubusercontent.com/LGgameLAB" height="50vh">
+						</a>
 					</figure>
+					<div class="progressBar">
+						<div id="contributors-people-LGgameLAB-pbar">
+						</div>
+					</div>
+					<p id="contributors-people-LGgameLAB"></p>
+					<script>
+						getContribsFor("LGgameLAB", function(data) {
+							var dom = document.getElementById("contributors-people-LGgameLAB");
+							var pbar = document.getElementById("contributors-people-LGgameLAB-pbar");
+							dom.innerHTML = data.count + " - " + data.percent + "%";
+							pbar.style.width = (data.percent * 100) + "%";
+						});
+					</script>
 				</div>
 			</div>
 		</div>
 		<div id="settings_view_pane" class="view">
-			<button onclick="settingsView.hide(document.getElementById('settings_view_pane'),document.getElementById('disableInteractionsMesh'))" class="view-close-button close-button">Close</button>
+			<button
+				onclick="settingsView.hide(document.getElementById('settings_view_pane'),document.getElementById('disableInteractionsMesh'))"
+				class="view-close-button close-button">
+				Close
+			</button>
 			<h1 class="center">Settings</h1>
 			<hr>
 			<details>

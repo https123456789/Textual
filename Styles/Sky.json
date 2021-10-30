@@ -1,0 +1,21 @@
+{
+	"Style": {
+		"toolbar": {
+			"bg": "rgb(50, 200, 255",
+			"color": "rgb(0, 0, 0)"
+		},
+		"toolbar-child": {
+			"bg": "rgb(50, 100, 255)",
+			"color": "rgb(0, 0, 0)"
+		},
+		"toolbar-bg": "rgb(50, 200, 255)",
+		"toolbar-color": "rgb(0, 0, 0)",
+		"toolbar-child-bg": "rgb(50, 100, 255)",
+		"toolbar-child-color": "rgb(0, 0, 0)",
+		"toolbar-child-hover-bg": "rgb(50, 200, 255)",
+		"font-size-select-bg": "rgb(50, 100, 255)",
+		"font-size-select-color": "rgb(0, 0, 0)",
+		"editor-bg": "rgb(255, 255, 255)",
+		"editor-color": "rgb(0, 0, 0)"
+	}
+}

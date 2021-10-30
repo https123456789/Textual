@@ -12,12 +12,55 @@ var settings = {
 		this.updateStyles();
 	},
 	updateStyles: function() {
+		var req = new XMLHttpRequest();
 		var theme = localStorage.getItem("themeName");
-		var sheet = document.styleSheets[1];
-		for (var i = 0; i < themes[theme].length; i++) {
-			sheet.cssRules[themes.Model[i]].style[themes.RuleIndex[i]] = themes[theme][i];
-		}
-		document.getElementById("themeLabel").innerHTML = theme;
+		req.addEventListener("load", function() {
+			if (this.status == 200) {
+				var res = JSON.parse(this.responseText);
+				var sheet = document.styleSheets[1];
+				var rules = [
+					/* .toolbar */
+					0,
+					/* .toolbar > * */
+					1,
+					/* .toolbar > button:hover */
+					3,
+					/* #fontSizeSelect */
+					6,
+					1,
+					6,
+					4,
+					4
+				];
+				var properties = [
+					"background-color",
+					"background-color",
+					"background-color",
+					"background-color",
+					"color",
+					"color",
+					"background-color",
+					"color"
+				];
+				var themePropNames = [
+					"toolbar-bg",
+					"toolbar-child-bg",
+					"toolbar-child-hover-bg",
+					"font-size-select-bg",
+					"toolbar-child-color",
+					"font-size-select-color",
+					"editor-bg",
+					"editor-color"
+				];
+				for (var i = 0; i < rules.length; i++) {
+					sheet.cssRules[rules[i]].style[properties[i]] = res["Style"][themePropNames[i]];
+				}
+			} else {
+				console.warn("Error: Failed to load resource 'Styles/" + theme + ".json'. Request returned status of " + this.status + ".");
+			}
+		});
+		req.open("GET", "Styles/" + theme + ".json");
+		req.send();
 	},
 	checkForUpdates: function() {
 		var versionLabel = document.getElementById("versionLabel");
