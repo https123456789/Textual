@@ -1,0 +1,25 @@
+.pbar {
+	background-color: rgba(0, 0, 0, 0.5);
+	animation-name: ripple;
+	animation-duration: 2s;
+}
+.progressBar {
+	margin-left: 12.5%;
+	margin-right: 12.5%;
+	background-color: rgba(0, 0, 0, 0.5);
+	width: 75%;
+	height: 5vh;
+}
+.progressBar > div {
+	background-color: rgb(10, 125, 10);
+	width: 0%;
+	height: 5vh;
+}
+@keyframes ripple {
+	0% {
+
+	}
+	100% {
+
+	}
+}

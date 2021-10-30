@@ -12,12 +12,36 @@ var settings = {
 		this.updateStyles();
 	},
 	updateStyles: function() {
+		var req = new XMLHttpRequest();
+		var theme = localStorage.getItem("themeName");
+		req.addEventListener("load", function() {
+			if (this.status == 200) {
+				var res = JSON.parse(this.responseText);
+				var sheet;
+				for (var i = 0; i < document.styleSheets.length; i++) {
+					if (document.styleSheets[i].title == "ui") {
+						sheet = document.styleSheets[i];
+					} else {
+						console.log(i + ", " + document.styleSheets[i].cssRules[0]);
+					}
+				}
+				for (const sheet of document.styleSheets) {
+					console.log(sheet.cssRules[0]["name"]);
+				}
+			} else {
+				console.warn("Error: Failed to load resource 'Styles/" + theme + ".json'. Request returned status of " + this.status + ".");
+			}
+		});
+		req.open("GET", "Styles/" + theme + ".json");
+		req.send();
+		/*
 		var theme = localStorage.getItem("themeName");
 		var sheet = document.styleSheets[1];
 		for (var i = 0; i < themes[theme].length; i++) {
 			sheet.cssRules[themes.Model[i]].style[themes.RuleIndex[i]] = themes[theme][i];
 		}
 		document.getElementById("themeLabel").innerHTML = theme;
+		*/
 	},
 	checkForUpdates: function() {
 		var versionLabel = document.getElementById("versionLabel");
