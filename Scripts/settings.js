@@ -17,16 +17,43 @@ var settings = {
 		req.addEventListener("load", function() {
 			if (this.status == 200) {
 				var res = JSON.parse(this.responseText);
-				var sheet;
-				for (var i = 0; i < document.styleSheets.length; i++) {
-					if (document.styleSheets[i].title == "ui") {
-						sheet = document.styleSheets[i];
-					} else {
-						console.log(i + ", " + document.styleSheets[i].cssRules[0]);
-					}
-				}
-				for (const sheet of document.styleSheets) {
-					console.log(sheet.cssRules[0]["name"]);
+				var sheet = document.styleSheets[1];
+				var rules = [
+					/* .toolbar */
+					0,
+					/* .toolbar > * */
+					1,
+					/* .toolbar > button:hover */
+					3,
+					/* #fontSizeSelect */
+					6,
+					1,
+					6,
+					4,
+					4
+				];
+				var properties = [
+					"background-color",
+					"background-color",
+					"background-color",
+					"background-color",
+					"color",
+					"color",
+					"background-color",
+					"color"
+				];
+				var themePropNames = [
+					"toolbar-bg",
+					"toolbar-child-bg",
+					"toolbar-child-hover-bg",
+					"font-size-select-bg",
+					"toolbar-child-color",
+					"font-size-select-color",
+					"editor-bg",
+					"editor-color"
+				];
+				for (var i = 0; i < rules.length; i++) {
+					sheet.cssRules[rules[i]].style[properties[i]] = res["Style"][themePropNames[i]];
 				}
 			} else {
 				console.warn("Error: Failed to load resource 'Styles/" + theme + ".json'. Request returned status of " + this.status + ".");
@@ -34,14 +61,6 @@ var settings = {
 		});
 		req.open("GET", "Styles/" + theme + ".json");
 		req.send();
-		/*
-		var theme = localStorage.getItem("themeName");
-		var sheet = document.styleSheets[1];
-		for (var i = 0; i < themes[theme].length; i++) {
-			sheet.cssRules[themes.Model[i]].style[themes.RuleIndex[i]] = themes[theme][i];
-		}
-		document.getElementById("themeLabel").innerHTML = theme;
-		*/
 	},
 	checkForUpdates: function() {
 		var versionLabel = document.getElementById("versionLabel");
