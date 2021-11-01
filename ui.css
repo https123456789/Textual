@@ -5,22 +5,28 @@
 	height: 10vh;
 	display: flex;
 	flex-direction: row;
+	font-size: 1em;
 }
-.toolbar > * {
+.toolbar-unit {
 	background-color: rgba(255, 255, 255, 1);
 	color: rgb(255, 255, 255);
 	height: 100%;
-	flex: 1;
 	border: none;
+	flex: 1;
 }
 .toolbar > button {
+	border: none;
 }
 .toolbar > button:hover {
 	background-color: rgba(255, 255, 255, 1);
 }
-.editor {
+#editor {
 	background-color: rgb(255, 255, 255);
 	color: rgb(255, 255, 255);
+	overflow-y: auto;
+	overflow-x: auto;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
 }
 .view {
 	

@@ -9,9 +9,10 @@
 		<!-- Utilities -->
 		<link rel="stylesheet" href="spinner.css?rnd=1">
 		<link rel="stylesheet" href="pbar.css?rnd=1">
+		<!-- Universal Constants -->
 		<script>
 			var GLOBAL = {
-				VERSION: "Beta 1.0"
+				VERSION: "Beta 0.0"
 			};
 			var DEFAULTS = {
 				THEME: "Sky"
@@ -23,18 +24,19 @@
 	<body>
 		<div class="column">
 			<div class="toolbar">
-				<button onclick="aboutView.show()">About</button>
-				<button onclick="settingsView.show()">Settings</button>
-				<button onclick="saveView.show()">Save</button>
+				<button onclick="aboutView.show()" class="toolbar-unit">About</button>
+				<button onclick="settingsView.show()" class="toolbar-unit">Settings</button>
+				<button onclick="saveView.show()" class="toolbar-unit">Save</button>
 			</div>
-			<div class="toolbar">
-				<div class="row">
+			<div class="toolbar" style="display: none">
+				<div class="row toolbar-unit disabled">
 					<label class="center">Font Size</label>
 					<select id="fontSizeSelect">
 						<option value="12px">12px</option>
 						<option value="24px">24px</option>
 					</select>
 				</div>
+				<button class="toolbar-unit disabled">Bold</button>
 			</div>
 		</div>
 		<code><div id="editor" contenteditable="true"></div>
@@ -79,6 +81,7 @@
 			<h3 class="center">People</h3>
 			<div class="row">
 				<div class="center">
+					<p>
 					<figure>
 						<figcaption>
 							https123456789
@@ -97,7 +100,7 @@
 							var dom = document.getElementById("contributors-people-https123456789");
 							var pbar = document.getElementById("contributors-people-https123456789-pbar");
 							dom.innerHTML = data.count + " - " + data.percent + "%";
-							pbar.style.width = (data.percent * 100) + "%";
+							pbar.style.width = (data.percent) + "%";
 						});
 					</script>
 				</div>
@@ -120,7 +123,7 @@
 							var dom = document.getElementById("contributors-people-LGgameLAB");
 							var pbar = document.getElementById("contributors-people-LGgameLAB-pbar");
 							dom.innerHTML = data.count + " - " + data.percent + "%";
-							pbar.style.width = (data.percent * 100) + "%";
+							pbar.style.width = (data.percent) + "%";
 						});
 					</script>
 				</div>

@@ -20,7 +20,7 @@ function getContribsFor(username, callback) {
 					}
 					var percent = Math.round((ret.count / totalCommits) * 1000) / 1000;
 					console.log(res.percent);
-					ret.percent = percent;
+					ret.percent = Math.round((percent * 100) * 1000) / 1000;
 					callback(ret);
 				}
 			});

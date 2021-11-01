@@ -21,7 +21,7 @@ var settings = {
 				var rules = [
 					/* .toolbar */
 					0,
-					/* .toolbar > * */
+					/* .toolbar-unit */
 					1,
 					/* .toolbar > button:hover */
 					3,
