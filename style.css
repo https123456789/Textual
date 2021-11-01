@@ -72,17 +72,34 @@ body {
 a {
 	color: rgb(0, 0, 0);
 }
-details {
+/* First Level Details */
+.details-1 {
 	padding: 1%;
 }
-details > summary {
+.details-1 > summary {
 	list-style: none;
 	font-weight: bold;
-	font-size: 24px;
+	font-size: 1.5em;
 	text-align: center;
 	border: 1px solid rgb(0, 0, 0);
+	cursor: pointer;
 }
-details > summary:hover {
+.details-1 > summary:hover {
+	background-color: rgba(200, 200, 200, 0.5);
+}
+/* Second Level Details */
+.details-2 {
+	padding: 1%;
+}
+.details-2 > summary {
+	list-style: none;
+	font-weight: bold;
+	font-size: 1em;
+	text-align: center;
+	border: 1px solid rgb(0, 0, 0);
+	cursor: pointer;
+}
+.details-2 > summary:hover {
 	background-color: rgba(200, 200, 200, 0.5);
 }
 /* View Panes */
