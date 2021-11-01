@@ -1,0 +1,34 @@
+{
+	"Patches": [
+		{
+			"Name": "Github API Data Patch",
+			"Details": "Adds local storage item that is integral to Textual.",
+			"id": 0,
+			"Status": 0
+		},
+		{
+			"Name": "Github API Data Patch 2",
+			"Details": "Adds local storage items that are integral to expiremental features in Textual.",
+			"id": 1,
+			"Status": 1
+		}
+	],
+	"Statuses": [
+		{
+			"Status": 0,
+			"Value": "Runtime Critical" 
+		},
+		{
+			"Status": 1,
+			"Value": "Runtime Critical To Expiremental Features"
+		},
+		{
+			"Status": 2,
+			"Value": "Recommended"
+		},
+		{
+			"Status": 3,
+			"Value": "Minor"
+		}
+	]
+}
