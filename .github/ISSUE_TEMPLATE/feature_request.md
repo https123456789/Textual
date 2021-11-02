@@ -9,6 +9,8 @@ assignees: https123456789
 
 # Feature Request: 
 
+**Remember to add this to the `Feature Requests` milestone.**
+
 **The current state of the project**
 
 ## The New Stuff
