@@ -13,3 +13,9 @@ assignees: https123456789
 
 ## The New Stuff
 **List all of the new features that would be introduced.**
+
+## Pros
+**List all of the benefits of this new feature/change.**
+
+## Cons
+**List all of the downsides of this new feature/change.**
