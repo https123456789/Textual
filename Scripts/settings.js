@@ -15,7 +15,7 @@ var settings = {
 		var req = new XMLHttpRequest();
 		var theme = localStorage.getItem("themeName");
 		req.addEventListener("load", function() {
-			if (this.status == 200) {
+			if (this.status == 200 || this.status == 0) {
 				var res = JSON.parse(this.responseText);
 				var sheet = document.styleSheets[1];
 				var rules = [
