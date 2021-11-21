@@ -3,10 +3,6 @@ function getContribsFor(username, callback) {
 
 	}
 	checkIfGAPICallsExist(function(useCached) {
-		var forceCached = localStorage.getItem("ForceGithubAPIUseC");
-		if (forceCached) {
-			useCached = true;
-		}
 		localStorage.setItem("GithubAPIUsingC", useCached);
 		if (useCached) {
 			var req = new XMLHttpRequest();

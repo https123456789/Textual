@@ -168,30 +168,6 @@
 					<li>Version Checking</li>
 					<li>Contributor Stats</li>
 				</ul>
-				<details class="details-2">
-					<summary>Control Center</summary>
-					<div class="row">
-						<div class="column">
-							<code>
-								<p>Using Cached Data: <span id="github-api-using-label"></span></p>
-							</code>
-						</div>
-						<div class="column">
-							<code>
-								<p>Force Use of Cached Data: <span id="github-api-force-using-label"></span></p>
-							</code>
-							<button onclick="toggleForceGAPI('ForceGithubAPIUseC', 'true', 'false')">Require Use of Cached Data</button>
-						</div>
-					</div>
-					<script>
-						setInterval(function() {
-							var githubApiUsingLabel = document.getElementById("github-api-using-label");
-							var githubApiForceUsingLabel = document.getElementById("github-api-force-using-label");
-							githubApiUsingLabel.innerHTML = localStorage.getItem("GithubAPIUsingC");
-							githubApiForceUsingLabel.innerHTML = localStorage.getItem("ForceGithubAPIUseC");
-						}, 1000);
-					</script>
-				</details>
 			</details>
 			<details class="details-1">
 				<summary>Factory Reset</summary>
