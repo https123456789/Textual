@@ -1,0 +1,7 @@
+{
+	"short_name": "Textual",
+	"name": "Textual",
+	"description": "A web based text editor.",
+	"start_url": "/",
+	"display": "minimal-ui"
+}
