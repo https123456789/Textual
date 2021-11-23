@@ -197,6 +197,45 @@ a {
 	background-color: rgba(200, 200, 200, 1);
 }
 
+/* Patches */
+
+.patches-content-window {
+	height: 50vh;
+	overflow: auto;
+}
+
+.patch {
+	border: 1px solid rgb(0, 0, 0);
+	border-radius: 5px;
+	margin-top: 2%;
+	margin-bottom: 2%;
+	padding: 1%;
+}
+.patch-title {
+	font-weight: bold;
+	font-size: 1.25em;
+}
+.patch-status {
+	border: 1px solid rgb(0, 0, 0);
+	border-radius: 5px;
+	padding: 1%;
+	text-align: center;
+}
+
+.patch-download {
+	width: 100%;
+	border: none;
+	background-color: rgba(20, 150, 20, 1);
+	text-decoration: none;
+	text-align: center;
+	appearance: button;
+	color: rgba(255, 255, 255, 1);
+}
+
+.patch-download:hover {
+	background-color: rgba(20, 150, 20, 0.75);
+}
+
 /* Buttons */
 .button-warning {
 	background-color: rgba(255, 50, 50, 1);
