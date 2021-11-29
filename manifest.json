@@ -2,6 +2,13 @@
 	"short_name": "Textual",
 	"name": "Textual",
 	"description": "A web based text editor.",
-	"start_url": "/",
-	"display": "minimal-ui"
+	"start_url": "",
+	"display": "minimal-ui",
+	"icons": [
+		{
+			"src": "/Resources/Icons/192-192-logo.svg",
+			"type": "image/svg+xml",
+			"sizes": "192x912"
+		}
+	]
 }
