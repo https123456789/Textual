@@ -42,7 +42,6 @@ function updatePatches() {
 					`;
 				}
 			}
-			console.log("Updated patches list.");
 		} else {
 			listDom.innerHTML = "<p>An error ocurred while loading patches.</p>";
 		}

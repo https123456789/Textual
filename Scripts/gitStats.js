@@ -11,7 +11,6 @@ function getContribsFor(username, callback) {
 					var res = JSON.parse(this.responseText);
 					var numberOfCommiters = res.length;
 					var totalCommits = 0;
-					console.log(numberOfCommiters);
 					for (var i = 0; i < numberOfCommiters; i++) {
 						if (res[i].author.login == username) {
 							ret.count = res[i].total;
@@ -19,7 +18,6 @@ function getContribsFor(username, callback) {
 						totalCommits += res[i].total;
 					}
 					var percent = Math.round((ret.count / totalCommits) * 1000) / 1000;
-					console.log(res.percent);
 					ret.percent = Math.round((percent * 100) * 1000) / 1000;
 					if (callback) {
 						callback(ret);
@@ -46,12 +44,9 @@ function checkIfGAPICallsExist(callback) {
 	res.addEventListener("load", function() {
 		if (this.status == 200) {
 			var d = JSON.parse(this.responseText);
-			console.log(d.resources.core.remaining);
 			if (d.resources.core.remaining != 0) {
-				console.log(true);
 				callback(true);
 			} else {
-				console.log(false);
 				callback(false);
 			}
 		} else {

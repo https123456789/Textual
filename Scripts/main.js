@@ -8,6 +8,12 @@ var aboutView = new View(
 	document.getElementById("about_view_pane_content"),
 	"about"
 );
+var extrasView = new View(
+	document.getElementById("extras_view_pane"),
+	document.getElementById("disableInteractionsMesh"),
+	document.getElementById("extras_view_pane_content"),
+	"extras"
+);
 var settingsView = new SettingsView(
 	document.getElementById("settings_view_pane"),
 	document.getElementById("disableInteractionsMesh"),

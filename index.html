@@ -27,6 +27,7 @@
 		<div class="column">
 			<div class="toolbar">
 				<button onclick="aboutView.show()" class="toolbar-unit">About</button>
+				<button onclick="extrasView.show()" class="toolbar-unit">Extras</button>
 				<button onclick="settingsView.show()" class="toolbar-unit">Settings</button>
 				<button onclick="saveView.show()" class="toolbar-unit">Save</button>
 			</div>
@@ -134,6 +135,25 @@
 				<p><a href="https://github.com/https123456789/Textual/graphs/contributors">Check Out All Contributors</a>.</p>
 			</div>
 		</div>
+		<div id="extras_view_pane" class="view">
+			<button
+				onclick="extrasView.hide(document.getElementById('extras_view_pane'), document.getElementById('disableInteractionsMesh'))"
+				class="view-close-button close-button">
+				Close
+			</button>
+			<h1 class="center">Extras</h1>
+			<hr>
+			<div id="extras_view_pane_content">
+				<details class="details-1">
+					<summary>Installed</summary>
+					<div id="extras-installed-list"></div>
+				</details>
+				<details class="details-1">
+					<summary>Marketplace</summary>
+					<div id="extras-marketplace-container"></div>
+				</details>
+			</div>
+		</div>
 		<div id="settings_view_pane" class="view">
 			<button
 				onclick="settingsView.hide(document.getElementById('settings_view_pane'),document.getElementById('disableInteractionsMesh'))"
@@ -206,13 +226,15 @@
 		<div id="themeScripts">
 			<script src="Styles/Sky.js"></script>
 		</div>
+		<script src="Scripts/extras.js" defer="defer"></script>
+		<noscript id="extrasLoadingArea"></noscript>
 		<script src="Scripts/settings.js"></script>
 		<script src="Scripts/base.js"></script>
 		<script src="Scripts/fileExport.js"></script>
 		<script src="Scripts/patches.js"></script>
 		<script src="Scripts/main.js"></script>
 		<script>
-			// Load defaults
+			// Load defaults on first run
 			if (!localStorage.getItem("firstRun")) {
 				localStorage.setItem("firstRun", "false");
 				firstRun();
