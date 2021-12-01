@@ -13,6 +13,21 @@ var extras = {
 		data.stack[obj.id] = obj;
 		localStorage.setItem("extrasStack", JSON.stringify(data));
 	},
+	publish: function(obj) {
+		var type = obj.constructor.name;
+		var acceptedList = [
+			"BasicPublicObject"
+		];
+		if (acceptedList.includes(type)) {
+			console.log("Publishing '" + obj.name + "' with id '" + obj.id + "'.");
+			if (!extras.public[obj.id]) {
+				extras.public[obj.id] = {};
+			}
+			extras.public[obj.id][obj.name] = obj;
+		} else {
+			console.log("Failed attempt to publish a not public extra object.");
+		}
+	},
 	lookup: function(id) {
 		var data = JSON.parse(localStorage.getItem("extrasStack"));
 		if (data == null) {
@@ -28,20 +43,24 @@ var extras = {
 			return 1;
 		}
 	},
+	public: {
+
+	},
 	BasicObject: class {
 		constructor(constructObj) {
-			this.name = constructObj.name;
-			this.id = constructObj.id;
-			this.dependList = constructObj.dependList;
+			var keys = Object.keys(constructObj);
+			for (var i = 0; i < keys.length; i++) {
+				this[keys[i]] = constructObj[keys[i]];
+			}
 		}
 	},
 	BasicPublicObject: class {
 		constructor(constructObj) {
-			this.constructObj = constructObj;
-			this.pid = constructObj.id;
-			this.name = constructObj.name;
-			this.id = constructObj.id;
-			this.dependList = constructObj.dependList;
+			var constructObj = constructObj;
+			var keys = Object.keys(constructObj);
+			for (var i = 0; i < keys.length; i++) {
+				this[keys[i]] = constructObj[keys[i]];
+			}
 		}
 	}
 };
@@ -62,6 +81,7 @@ function loadExtras() {
 		el.src = "Extras/" + i + "/index.js";
 		divDom.appendChild(el);
 	}
+	console.log("Extras loaded.");
 }
 
 function updateExtrasView() {
@@ -76,15 +96,22 @@ function updateExtrasView() {
 			]
 		};
 	}
+	var content = "";
 	for (var i = 0; i < elist.list.length; i++) {
-		console.log(elist.list[i]);
 		var extra = extras.lookup(elist.list[i]);
-		idomRef.innerHTML += `
-			<div class="extra-list-item">
-				<h3 style="border-bottom: 1px solid rgb(0, 0, 0);">${extra.name}</h3>
+		content += `
+			<div class="extra-list-item row">
+				<div class="column">
+					<h3>${extra.name}</h3>
+					<p>${extra.description}</p>
+				</div>
+				<div class="column">
+					<h4>Permissions</h4>
+				</div>
 			</div>
 		`;
 	}
+	idomRef.innerHTML = content;
 }
 
 function extrasUpdateLoop() {

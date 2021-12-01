@@ -146,12 +146,27 @@
 			<div id="extras_view_pane_content">
 				<details class="details-1">
 					<summary>Installed</summary>
-					<div id="extras-installed-list"></div>
+					<div class="extras-list-container">
+						<div id="extras-installed-list"></div>
+					</div>
 				</details>
-				<details class="details-1">
-					<summary>Marketplace</summary>
-					<div id="extras-marketplace-container"></div>
-				</details>
+				<button
+					onclick="openMarketplace()"
+					class="details-button-1">
+					View Marketplace
+				</button>
+			</div>
+		</div>
+		<div id="extras_marketplace_view_pane" class="view">
+			<button
+				onclick="extrasMarketplaceView.hide(document.getElementById('extras_marketplace_view_pane'), document.getElementById('disableInteractionsMesh'))"
+				class="view-close-button close-button">
+				Close
+			</button>
+			<h1 class="center">Marketplace</h1>
+			<hr>
+			<div id="extras_marketplace_view_pace_content">
+			
 			</div>
 		</div>
 		<div id="settings_view_pane" class="view">
@@ -226,8 +241,8 @@
 		<div id="themeScripts">
 			<script src="Styles/Sky.js"></script>
 		</div>
-		<script src="Scripts/extras.js" defer="defer"></script>
-		<noscript id="extrasLoadingArea"></noscript>
+		<div id="extrasLoadingArea"></div>
+		<script src="Scripts/extras.js"></script>
 		<script src="Scripts/settings.js"></script>
 		<script src="Scripts/base.js"></script>
 		<script src="Scripts/fileExport.js"></script>

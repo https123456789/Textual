@@ -14,6 +14,12 @@ var extrasView = new View(
 	document.getElementById("extras_view_pane_content"),
 	"extras"
 );
+var extrasMarketplaceView = new Overview(
+	document.getElementById("extras_marketplace_view_pane"),
+	document.getElementById("disableInteractionsMesh"),
+	document.getElementById("extras_marketplace_pane_content"),
+	"extras marketplace"
+);
 var settingsView = new SettingsView(
 	document.getElementById("settings_view_pane"),
 	document.getElementById("disableInteractionsMesh"),
@@ -29,6 +35,8 @@ var saveView = new SaveView(
 );
 var views = [
 	aboutView,
+	extrasView,
+	extrasMarketplaceView,
 	settingsView,
 	saveView
 ];
@@ -86,6 +94,14 @@ var editor = {
 
 editor.init();
 var updateLoop = setInterval(update, 100);
+
+function openMarketplace() {
+	/*extrasView.hide(
+		document.getElementById('extras_view_pane'),
+		document.getElementById('disableInteractionsMesh')
+	);*/
+	extrasMarketplaceView.show();
+}
 
 function update() {
 	editor.update();

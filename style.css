@@ -102,6 +102,22 @@ a {
 .details-2 > summary:hover {
 	background-color: rgba(200, 200, 200, 0.5);
 }
+
+/* Button Details */
+.details-button-1 {
+	margin-left: 1%;
+	border: 1px solid rgb(0, 0, 0);
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+	font-weight: bold;
+	font-size: 1.5em;
+	text-align: center;
+	width: 98%;
+}
+.details-button-1:hover {
+	background-color: rgba(200, 200, 200, 0.5);
+}
+
 /* View Panes */
 .view-close-button {
 	position: fixed;
@@ -195,6 +211,19 @@ a {
 .disabled-unit {
 	pointer-events: none;
 	background-color: rgba(200, 200, 200, 1);
+}
+
+.extras-list-container {
+	height: 50vh;
+	overflow-y: auto;
+}
+
+.extra-list-item {
+	border: 1px solid rgba(0, 0, 0, 1);
+	border-radius: 15px;
+	margin-top: 1%;
+	margin-bottom: 1%;
+	padding: 1%;
 }
 
 /* Patches */

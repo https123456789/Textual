@@ -45,6 +45,14 @@ class View {
 		this.closeAnimationEnded();
 	}
 }
+class Overview extends View {
+	constructor(domObj, ddomObj, cdomObj, name) {
+		super(domObj, ddomObj, cdomObj, name);
+	}
+	closeAnimationEnded() {
+		this.dom.style.display = "none";
+	}
+}
 class SaveView extends View {
 	constructor(domObj, ddomObj, downDomObj, cdomObj) {
 		super(domObj, ddomObj, cdomObj);
