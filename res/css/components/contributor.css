@@ -1,0 +1,88 @@
+.contributor-data-container {
+	display: grid;
+	grid-template-areas:
+		"a"
+		"b";
+	text-align: center;
+}
+
+.contributors-platforms-container {
+	display: flex;
+	flex-direction: row;
+	flex: 1;
+	width: 100%;
+}
+
+.contributors-platforms-item {
+	display: grid;
+	grid-templage-areas:
+		"a"
+		"b";
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.contributors-platforms-item-logo {
+	height: 25vmin;
+	border-radius: 50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#contributors-container {
+	display: grid;
+	grid-template-columns: auto auto;
+	margin-left: auto;
+	margin-right: auto;
+	gap: 5vmin;
+}
+
+.contributor-data-icon {
+	height: 25vmin;
+	border-radius: 50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.contributor-data-username {
+	text-align: center;
+}
+
+.contributor-data-percent {
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px solid var(--theme-default-border-color);
+	background-color: rgba(0, 0, 0, 0);
+	width: 90%;
+	height: 3vmin;
+}
+
+.contributor-data-percent-text {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.contributor-data-percent::-webkit-progress-bar {
+	background-color: rgba(0, 0, 0, 0);
+}
+
+.contributor-data-percent::-webkit-progress-value {
+	background-color: var(--contributor-progressbar-value-color);
+}
+
+.contributor-data-percent-value-anm {
+	animation-name: contributor-data-percent-value-animation;
+	animation-duration: 2s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes contributor-data-percent-value-animation {
+	0% {
+		width: 0%;
+	}
+	100% {
+		width: 90%;
+	}
+}

@@ -1,0 +1,13 @@
+#editor {
+	position: fixed;
+	top: 10vh;
+	left: 0px;
+	right: 0px;
+	height: 90vh;
+	background-color: var(--editor-background-color);
+	color: var(--editor-text-color);
+	tab-size: 4;
+}
+#editor:focus {
+	outline: none;
+}

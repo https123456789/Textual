@@ -3,258 +3,131 @@
 	<head>
 		<title>Textual</title>
 		<link rel="manifest" href="manifest.json">
-		<link rel="icon" href="Resources/Icons/192-192-logo.svg">
-		<!-- Main Stylesheet -->
-		<link rel="stylesheet" href="style.css?rnd=1">
-		<!-- Theme Stylesheet -->
-		<link rel="stylesheet" href="ui.css?rnd=1">
-		<!-- Utilities -->
-		<link rel="stylesheet" href="spinner.css?rnd=1">
-		<link rel="stylesheet" href="pbar.css?rnd=1">
-		<!-- Universal Constants -->
+		<link rel="icon" href="res/imgs/logo.svg?rnd=1">
+		<link rel="stylesheet" href="res/css/main.css?rnd=1">
+		<!-- Component stlyes -->
+		<link rel="stylesheet" href="res/css/components/toolbar.css?rnd=1">
+		<link rel="stylesheet" href="res/css/components/editor.css?rnd=1">
+		<link rel="stylesheet" href="res/css/components/view.css?rnd=1">
+		<link rel="stylesheet" href="res/css/components/contributor.css?rnd=1">
+		<!-- Global Constants -->
 		<script>
 			var GLOBAL = {
-				VERSION: "Beta 1.0"
+				VERSION: "Beta 0.1",
+				VERSION_PREFIX: "Beta",
+				VERSION_TOP: 0,
+				VERSION_SUB: 1
 			};
 			var DEFAULTS = {
-				THEME: "Sky"
+				THEME: "Light.css"
 			};
 		</script>
-		<!-- Needed here because it is used in the DOM -->
-		<script src="Scripts/gitStats.js"></script>
+		<div id="themeManager-loader-section"></div>
 	</head>
 	<body>
-		<div class="column">
-			<div class="toolbar">
-				<button onclick="aboutView.show()" class="toolbar-unit">About</button>
-				<button onclick="extrasView.show()" class="toolbar-unit">Extras</button>
-				<button onclick="settingsView.show()" class="toolbar-unit">Settings</button>
-				<button onclick="saveView.show()" class="toolbar-unit">Save</button>
-			</div>
-			<div class="toolbar" style="display: none">
-				<div class="row toolbar-unit disabled">
-					<label class="center">Font Size</label>
-					<select id="fontSizeSelect">
-						<option value="12px">12px</option>
-						<option value="24px">24px</option>
-					</select>
-				</div>
-				<button class="toolbar-unit disabled">Bold</button>
-			</div>
+		<div class="toolbar-container">
+			<button class="toolbar-item" onclick="saveView.show()">Save</button>
+			<button class="toolbar-item" onclick="aboutView.show()">About</button>
+			<button class="toolbar-item" onclick="settingsView.show()">Settings</button>
+			<button class="toolbar-item">Extras - Coming soon!</button>
 		</div>
-		<code><div id="editor" contenteditable="true"></div>
+		<code><textarea id="editor" contenteditable="true"></textarea>
 		</code>
 		<!--
 			Document view panes
 		-->
-		<div id="about_view_pane" class="view">
-			<button onclick="aboutView.hide(document.getElementById('about_view_pane'), document.getElementById('disableInteractionsMesh'))" class="view-close-button close-button">Close</button>
-			<h1 class="center">About</h1>
-			<hr>
-			<p>Textual is a browser based text editor.</p>
-			<p>Need help? Email me at <a href="mailto:textualproject@gmail.com">textualproject@gmail.com</a>.</p>
-			<p>Textual was created by <a href="https://github.com/https123456789">https123456789</a>. You can check out the repository on <a href="https://github.com/https123456789/Textual/">Github</a>.</p>
-			<h2 class="center">Contributors</h2>
-			<hr>
-			<h3 class="center">Platforms</h3>
-			<div class="row">
-				<div class="center">
-					<figure>
-						<figcaption>
-							Github
-						</figcaption>
-						<a href="https://github.com">
-							<img src="Resources/Images/Views/About/github_logo.png" height="50vh" alt="Github Logo">
+		<div id="about-view" class="view">
+			<button onclick="aboutView.hide()" class="view-closer-btn">X</button>
+			<div class="view-main">
+				<h1 class="center">About</h1>
+				<hr>
+				<p>Textual is a browser based text editor.</p>
+				<p>Textual was created by <a href="https://github.com/https123456789" target="_blank">https123456789</a>. You can check out the repository on <a href="https://github.com/https123456789/Textual/" target="_blank">Github</a>.</p>
+				<h2 class="center">Contributors</h2>
+				<hr>
+				<h3 class="center">Platforms</h3>
+				<div class="contributors-platforms-container">
+					<figure class="contributors-platforms-item">
+						<figcaption>Github</figcaption>
+						<a href="//github.com" target="_blank">
+							<img src="res/imgs/github-logo.png" alt="Github Logo" class="contributors-platforms-item-logo">
 						</a>
 					</figure>
-					<p>Provided source control and code collaboration. Textual also utilizes the <a href="https://docs.github.com/en/rest">Github API</a>.</p>
-				</div>
-				<div class="center">
-					<figure>
-						<figcaption>
-							Replit
-						</figcaption>
-						<a href="https://replit.com">
-							<img src="Resources/Images/Views/About/replit_logo.png" height="50vh" alt="Replit Logo">
+					<figure class="contributors-platforms-item">
+						<figcaption>Replit</figcaption>
+						<a href="//replit.com" target="_blank">
+							<img src="res/imgs/rl.png" alt="Replit Logo" class="contributors-platforms-item-logo">
 						</a>
 					</figure>
-					<p>Provided a easy to use IDE for development.</p>
 				</div>
-			</div>
-			<h3 class="center">People</h3>
-			<div class="row">
-				<div class="center">
-					<p>
-					<figure>
-						<figcaption>
-							https123456789
-						</figcaption>
-						<a href="https://github.com/https123456789">
-							<img src="https://avatars.githubusercontent.com/https123456789" height="50vh">
-						</a>
-					</figure>
-					<div class="progressBar">
-						<div id="contributors-people-https123456789-pbar">
-						</div>
-					</div>
-					<p id="contributors-people-https123456789"></p>
-					<script>
-						getContribsFor("https123456789", function(data) {
-							var dom = document.getElementById("contributors-people-https123456789");
-							var pbar = document.getElementById("contributors-people-https123456789-pbar");
-							dom.innerHTML = data.count + " - " + data.percent + "%";
-							pbar.style.width = (data.percent) + "%";
-						});
-					</script>
+				<h3 class="center">People</h3>
+				<div id="contributors-container">
+
 				</div>
 				<div class="center">
-					<figure>
-						<figcaption>
-							LGgameLAB
-						</figcaption>
-						<a href="https://github.com/LGgameLAB">
-							<img src="https://avatars.githubusercontent.com/LGgameLAB" height="50vh">
-						</a>
-					</figure>
-					<div class="progressBar">
-						<div id="contributors-people-LGgameLAB-pbar">
-						</div>
-					</div>
-					<p id="contributors-people-LGgameLAB"></p>
-					<script>
-						getContribsFor("LGgameLAB", function(data) {
-							var dom = document.getElementById("contributors-people-LGgameLAB");
-							var pbar = document.getElementById("contributors-people-LGgameLAB-pbar");
-							dom.innerHTML = data.count + " - " + data.percent + "%";
-							pbar.style.width = (data.percent) + "%";
-						});
-					</script>
+					<p><a href="https://github.com/https123456789/Textual/graphs/contributors" target="_blank">Check Out All Contributors</a>.</p>
 				</div>
-			</div>
-			<div class="center">
-				<p><a href="https://github.com/https123456789/Textual/graphs/contributors">Check Out All Contributors</a>.</p>
 			</div>
 		</div>
-		<div id="extras_view_pane" class="view">
-			<button
-				onclick="extrasView.hide(document.getElementById('extras_view_pane'), document.getElementById('disableInteractionsMesh'))"
-				class="view-close-button close-button">
-				Close
-			</button>
-			<h1 class="center">Extras</h1>
-			<hr>
-			<div id="extras_view_pane_content">
+		<div id="settings-view" class="view">
+			<button onclick="settingsView.hide()" class="view-closer-btn">X</button>
+			<div class="view-main">
+				<h1 class="center">Settings</h1>
+				<hr>
 				<details class="details-1">
-					<summary>Installed</summary>
-					<div class="extras-list-container">
-						<div id="extras-installed-list"></div>
-					</div>
+					<summary>Version</summary>
+					<p>You are using version <span class="versionLabel"></span>.</p>
+					<div id="updateStatusOutput"></div>
 				</details>
-				<button
-					onclick="openMarketplace()"
-					class="details-button-1">
-					View Marketplace
-				</button>
+				<details class="details-1">
+					<summary>Theme</summary>
+					<p>Change Theme</p>
+					<select id="themeSelector">
+						<option>Loading...</option>
+					</select>
+					<button onclick="themeManager.setThemeFromSelector()">Set</button>
+				</details>
+				<details class="details-1">
+					<summary>Github API</summary>
+					<p>Textual uses the <a href="https://docs.github.com/en/rest" target="_blank">Github API</a> to collect data about the project. The API is used in these features:</p>
+					<ul>
+						<li>Version Checking</li>
+						<li>Contributor Stats</li>
+					</ul>
+				</details>
+				<details class="details-1">
+					<summary>Factory Reset</summary>
+					<button onclick="factoryReset()" class="factoryReset-btn">Factory Reset</button>
+				</details>
 			</div>
 		</div>
-		<div id="extras_marketplace_view_pane" class="view">
-			<button
-				onclick="extrasMarketplaceView.hide(document.getElementById('extras_marketplace_view_pane'), document.getElementById('disableInteractionsMesh'))"
-				class="view-close-button close-button">
-				Close
-			</button>
-			<h1 class="center">Marketplace</h1>
-			<hr>
-			<div id="extras_marketplace_view_pace_content">
-			
-			</div>
-		</div>
-		<div id="settings_view_pane" class="view">
-			<button
-				onclick="settingsView.hide(document.getElementById('settings_view_pane'),document.getElementById('disableInteractionsMesh'))"
-				class="view-close-button close-button">
-				Close
-			</button>
-			<h1 class="center">Settings</h1>
-			<hr>
-			<details class="details-1">
-				<summary>Version</summary>
-				<p>You are using version <span id="versionLabel"></span>.</p>
-				<div id="updateStatusOutput"></div>
-			</details>
-			<details class="details-1">
-				<summary>Patches</summary>
-				<div class="patches-content-window">
-					<div id="patchesList"></div>
+		<div id="save-view" class="view">
+			<button onclick="saveView.hide()" class="view-closer-btn">X</button>
+			<div class="view-main">
+				<h1 class="center">Save</h1>
+				<hr>
+				<div>
+					<p>Save as a file:</p>
+					<button onclick="editor.save()">Save</button>
 				</div>
-			</details>
-			<details class="details-1">
-				<summary>Theme</summary>
-				<div class="row">
-					<div class="column" class="center">
-						<h3 id="themeLabel" class="center"></h3>
-					</div>
-					<div class="column">
-						<h3>Change Theme</h3>
-						<select id="themeSelector">
-							<option value="Sky">Sky</option>
-						</select>
-						<br>
-						<button onclick="settings.setTheme(document.getElementById('themeSelector').value)">Save</button>
-					</div>
+				<div>
+					<p>Export as:</p>
+					<select id='exportCtpicker'>
+						<option value='text/plain'>Plain Text</option>
+						<option value="text/html">HTML</option>
+					</select>
+					<button onclick="editor.saveAs()">Export</button>
 				</div>
-			</details>
-			<details class="details-1">
-				<summary>Github API</summary>
-				<p>Textual uses the <a href="https://docs.github.com/en/rest">Github API</a> to collect data about the project. The API is used in these features:</p>
-				<ul>
-					<li>Version Checking</li>
-					<li>Contributor Stats</li>
-				</ul>
-			</details>
-			<details class="details-1">
-				<summary>Factory Reset</summary>
-				<button onclick="factoryReset()" class="button-warning fill-w">Factory Reset</button>
-			</details>
-		</div>
-		<div id="save_view_pane" class="view">
-			<button onclick="saveView.hide(document.getElementById('save_view_pane'), document.getElementById('disableInteractionsMesh'))" class="view-close-button close-button">Close</button>
-			<h1 class="center">Save</h1>
-			<hr>
-			<div>
-				<p>Save as a file:</p>
-				<button onclick="editor.save()">Save</button>
-			</div>
-			<div>
-				<p>Export as:</p>
-				<select id='fileExportTypeinput'>
-					<option value='text/plain'>Plain Text</option>
-					<option value="text/html">HTML</option>
-				</select>
-				<button onclick="editor.exportAs()">Export</button>
 			</div>
 		</div>
 		<div class="disableInteractionsMesh" id="disableInteractionsMesh"></div>
 		<div id="popups"></div>
 		<!-- Scripts -->
-		<script src="Scripts/themes.js"></script>
-		<div id="themeScripts">
-			<script src="Styles/Sky.js"></script>
-		</div>
-		<div id="extrasLoadingArea"></div>
-		<script src="Scripts/extras.js"></script>
-		<script src="Scripts/settings.js"></script>
-		<script src="Scripts/base.js"></script>
-		<script src="Scripts/fileExport.js"></script>
-		<script src="Scripts/patches.js"></script>
-		<script src="Scripts/main.js"></script>
-		<script>
-			// Load defaults on first run
-			if (!localStorage.getItem("firstRun")) {
-				localStorage.setItem("firstRun", "false");
-				firstRun();
-				console.log("First Run!");
-			}
-		</script>
+		<script defer src="res/js/settings.js"></script>
+		<script defer src="res/js/theme.js"></script>
+		<script defer src="res/js/views.js"></script>
+		<script defer src="res/js/editor.js"></script>
+		<script defer src="res/js/contributors.js"></script>
+		<script defer src="res/js/main.js"></script>
 	</body>
 </html>
