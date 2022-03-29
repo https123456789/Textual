@@ -2,7 +2,13 @@ class ThemeManager {
 	constructor() {
 		this.loaderDom = document.getElementById("themeManager-loader-section");
 		this.themeSelector = document.getElementById("themeSelector");
-		this.availableThemes = [];
+		this.themeSelector.addEventListener("change", (event) => {
+			this.setThemeFromSelector();
+		});
+		this.availableThemes = {
+			optGroups: [],
+			themes: []
+		};
 	}
 	init() {
 		this.currentTheme = localStorage.getItem("theme");
@@ -16,8 +22,11 @@ class ThemeManager {
 		document.body.appendChild(el);
 	}
 	registerThemes(data) {
+		data.optGroups.forEach((item) => {
+			this.availableThemes.optGroups.push(item);
+		});
 		data.themes.forEach((item) => {
-			this.availableThemes.push(item);
+			this.availableThemes.themes.push(item);
 		});
 	}
 	updateThemeSelector() {
@@ -28,12 +37,21 @@ class ThemeManager {
 			);
 		}
 		// Fill selector
-		this.availableThemes.forEach((item) => {
-			var opt = document.createElement("option");
-			opt.value = item.filePath;
-			opt.innerHTML = item.name;
-			this.themeSelector.appendChild(opt);
+		this.availableThemes.optGroups.forEach((item) => {
+			var containerEl = document.createElement("optgroup");
+			containerEl.label = item.fullName;
+			this.availableThemes.themes.forEach((citem) => {
+				if (citem.optGroup.name != item.name) {
+					return;
+				}
+				var opt = document.createElement("option");
+				opt.value = citem.filePath;
+				opt.innerHTML = citem.name;
+				containerEl.appendChild(opt);
+			});
+			this.themeSelector.appendChild(containerEl);
 		});
+		this.themeSelector.value = this.currentTheme;
 	}
 	loadThemeSheet(themeName) {
 		// Clear current theme sheet loaded
@@ -43,7 +61,7 @@ class ThemeManager {
 		// Create the new theme sheet
 		var newThemeSheet = document.createElement("link");
 		newThemeSheet.rel = "stylesheet";
-		newThemeSheet.href = "themes/" + themeName + "?rnd=1";
+		newThemeSheet.href = "themes/" + themeName + "";
 		// Add the theme sheet
 		this.loaderDom.appendChild(newThemeSheet);
 	}
@@ -51,6 +69,7 @@ class ThemeManager {
 		this.currentTheme = themeName;
 		this.loadThemeSheet(themeName);
 		localStorage.setItem("theme", themeName);
+		this.themeSelector.value = themeName;
 		console.log("Set theme to " + this.currentTheme);
 	}
 	setThemeFromSelector() {

@@ -1,7 +1,3 @@
-:root {
-	
-}
-
 body {
 	margin: 0px;
 }
@@ -44,4 +40,21 @@ body a {
 	background-color: rgba(255, 0, 0, 0.5);
 	border: none;
 	margin-top: 1%;
+}
+
+#themeSelector {
+	color: var(--view-text-color);
+	background-color: var(--view-background-color);
+	width: 100%;
+	text-align: center;
+}
+
+#themeSelector:focus {
+	outline: none;
+}
+
+#themeSelector > option {
+	background-color: var(--view-background-color);
+	color: var(--view-text-color);
+	text-align: center;
 }
