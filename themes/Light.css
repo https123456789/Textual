@@ -1,0 +1,20 @@
+:root {
+	/* General */
+	--theme-default-border-color: rgba(0, 0, 0, 1);
+	--theme-text-color: rgba(0, 0, 0, 1);
+
+	/* Toolbar */
+	--toolbar-background-color: rgba(50, 100, 255, 1);
+	--toolbar-background-color-hover: rgba(20, 150, 255, 1);
+	--toolbar-border-color: rgba(0, 0, 0, 1);
+	--toolbar-text-color: rgba(255, 255, 255, 1);
+	
+	/* Views */
+	--view-background-color: rgba(255, 255, 255, 1);
+	--view-text-color: rgba(0, 0, 0, 1);
+	--disableInteractionsMesh-background-color: rgba(100, 100, 100, 0.5);
+	
+	/* Editor */
+	--editor-background-color: rgba(255, 255, 255, 1);
+	--editor-text-color: rgba(0, 0, 0, 1);
+}

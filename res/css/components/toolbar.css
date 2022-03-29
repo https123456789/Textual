@@ -1,0 +1,24 @@
+.toolbar-container {
+	background-color: var(--toolbar-background-color);
+	color: var(--toolbar-text-color);
+	display: grid;
+	grid-template-rows: auto;
+	grid-template-columns: auto auto auto auto;
+	width: 100vw;
+	height: 10vh;
+	border-bottom: 1px solid var(--toolbar-border-color);
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+}
+
+.toolbar-item {
+	background-color: var(--toolbar-background-color);
+	color: var(--toolbar-text-color);
+	border: none;
+}
+
+.toolbar-item:hover {
+	background-color: var(--toolbar-background-color-hover);
+}
