@@ -24,7 +24,7 @@ class View {
 		this.disableInteractionsMesh.style.display = "none";
 		this.topDom.style.display = "none";
 		this.registedHideEventHooks.forEach((item) => {
-			item();
+			this.runEventHook(item);
 		});
 	}
 	/* Event hooks */
@@ -33,5 +33,8 @@ class View {
 	}
 	registerHideEventHook(callback) {
 		this.registedHideEventHooks.push(callback);
+	}
+	runEventHook(callback) {
+		callback();
 	}
 }

@@ -1,4 +1,5 @@
 #editor {
+	will-change: background-color, color;
 	position: fixed;
 	top: 10vh;
 	left: 0px;

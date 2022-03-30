@@ -4,7 +4,11 @@ class SettingsManager {
 			status: {
 				content: {
 					uptodate: `<p>Your up to date :)</p>`,
-					updateNeeded: (versionName, downloadLink) => `<div class="center"><p>Update available</p><p>${versionName}</p><p>Download <a href="${downloadLink}" target="_blank">here</a>.</div>`
+					updateNeeded: (versionName, downloadLink) => `<div class="center">
+						<p>Update available</p>
+						<p>${versionName}</p>
+						<p>Download <a href="${downloadLink}" target="_blank">here</a>.
+						</div>`
 				}
 			}
 		}
@@ -12,6 +16,7 @@ class SettingsManager {
 	init() {
 		this.view = settingsView;
 		this.view.registerShowEventHook(this.viewShowed);
+		this.checkForUpdate();
 		this.updateVersionLabels();
 	}
 	updateVersionLabels() {
@@ -21,7 +26,6 @@ class SettingsManager {
 		}
 	}
 	viewShowed() {
-		settingsManager.checkForUpdate()
 		themeManager.updateThemeSelector();
 	}
 	checkForUpdate() {
@@ -35,7 +39,7 @@ class SettingsManager {
 				return;
 			}
 			var data = JSON.parse(request.responseText);
-			var versionVerboseName = `${data.versionIdentifier.versionData.prefix} ${data.versionIdentifier.versionData.top}.${data.versionIdentifier.versionData.sub}`
+			var versionVerboseName = `${data.versionIdentifier.versionData.prefix} ${data.versionIdentifier.versionData.top}.${data.versionIdentifier.versionData.sub}`;
 			// Check if update is available
 			if (data.versionIdentifier.versionData.top <= GLOBAL.VERSION_TOP) {
 				if (data.versionIdentifier.versionData.sub <= GLOBAL.VERSION_SUB) {
@@ -50,7 +54,8 @@ class SettingsManager {
 				updateDom.innerHTML = this.updates.status.content.updateNeeded(versionVerboseName, "https://github.com/https123456789/Textual/releases");
 			}
 		}
-		request.open("GET", versionUrl, false);
+		request.open("GET", versionUrl);
 		request.send();
+		return;
 	}
 }

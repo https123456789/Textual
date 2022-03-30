@@ -1,4 +1,5 @@
 .toolbar-container {
+	will-change: background-color, color;
 	background-color: var(--toolbar-background-color);
 	color: var(--toolbar-text-color);
 	display: grid;
@@ -14,11 +15,13 @@
 }
 
 .toolbar-item {
+	will-change: background-color, color;
 	background-color: var(--toolbar-background-color);
 	color: var(--toolbar-text-color);
 	border: none;
 }
 
 .toolbar-item:hover {
+	will-change: background-color;
 	background-color: var(--toolbar-background-color-hover);
 }
