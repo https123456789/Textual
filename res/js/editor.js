@@ -1,7 +1,12 @@
 class Editor {
 	constructor() {
 		this.domRef = document.getElementById("editor");
-		this.content = "Textual " + GLOBAL.VERSION;
+		var gQuery = new URLSearchParams(window.location.search);
+		if (gQuery.get("content")) {
+			this.content = gQuery.get("content");
+		} else {
+			this.content = "Textual " + GLOBAL.VERSION;
+		}
 		this.domRef.value = this.content;
 		this.domRef.addEventListener("keydown", (event) => {
 			this.keydown(event);

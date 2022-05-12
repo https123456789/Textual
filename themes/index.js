@@ -7,6 +7,11 @@ themeManager.registerThemes({
 			index: 0
 		},
 		{
+			name: "colors",
+			fullName: "Colors",
+			forceIndex: false
+		},
+		{
 			name: "dev",
 			fullName: "Developers",
 			forceIndex: true,
@@ -33,6 +38,20 @@ themeManager.registerThemes({
 			filePath: "dev/main.css",
 			optGroup: {
 				name: "dev"
+			}
+		},
+		{
+			name: "Green",
+			filePath: "colors/green.css",
+			optGroup: {
+				name: "colors"
+			}
+		},
+		{
+			name: "Blue",
+			filePath: "colors/blue.css",
+			optGroup: {
+				name: "colors"
 			}
 		}
 	]

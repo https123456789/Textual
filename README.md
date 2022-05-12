@@ -16,5 +16,3 @@ A web based text editor.
 ## Developers
 
 Remember to read the rules!
-
-- [Extras Rules](<https://github.com/https123456789/Textual/blob/main/Rules/extrasRules.md>)

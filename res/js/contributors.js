@@ -16,7 +16,11 @@ function updateContributorsList() {
 		console.log("tcr - " + tcr.status);
 		return;
 	}
-	var pageMax = tcr.getResponseHeader("link").split(",").at(-1).split(";")[0].split("&page=").at(-1).split(">")[0];
+	var pageMax = tcr.getResponseHeader("link");
+	if (typeof(pageMax) != "string") {
+		return;
+	}
+	pageMax = pageMax.split(",")[0].split(";")[0].split("&page=").at(-1).split(">")[0];
 	pageMax = parseInt(pageMax);
 	var tcr2 = new XMLHttpRequest();
 	tcr2.open("GET", "https://api.github.com/repos/https123456789/Textual/commits?par_page=5&page=" + pageMax, false);

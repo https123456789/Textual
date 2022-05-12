@@ -58,3 +58,9 @@ body a {
 	color: var(--view-text-color);
 	text-align: center;
 }
+
+.extra-runtime {
+	position: fixed;
+	top: -100vh;
+	border: none;
+}

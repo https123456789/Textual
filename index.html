@@ -3,13 +3,14 @@
 	<head>
 		<title>Textual</title>
 		<link rel="manifest" href="manifest.json">
-		<link rel="icon" href="res/imgs/logo.svg?rnd=1">
+		<link rel="icon" href="res/imgs/logo.svg?rnd=2">	
 		<link rel="stylesheet" href="res/css/main.css?rnd=1">
 		<!-- Component stlyes -->
 		<link rel="stylesheet" href="res/css/components/toolbar.css?rnd=1">
 		<link rel="stylesheet" href="res/css/components/editor.css?rnd=1">
 		<link rel="stylesheet" href="res/css/components/view.css?rnd=1">
 		<link rel="stylesheet" href="res/css/components/contributor.css?rnd=1">
+		<link rel="stylesheet" href="res/css/components/console.css?rnd=1">
 		<!-- Global Constants -->
 		<script>
 			var GLOBAL = {
@@ -29,7 +30,7 @@
 			<button class="toolbar-item" onclick="saveView.show()">Save</button>
 			<button class="toolbar-item" onclick="aboutView.show()">About</button>
 			<button class="toolbar-item" onclick="settingsView.show()">Settings</button>
-			<button class="toolbar-item">Extras - Coming soon!</button>
+			<button class="toolbar-item" onclick="extrasView.show()">Extras - Coming soon!</button>
 		</div>
 		<code><textarea id="editor" contenteditable="true"></textarea>
 		</code>
@@ -119,8 +120,35 @@
 				</div>
 			</div>
 		</div>
+		<div class="view" id="extras-view">
+			<button onclick="extrasView.hide()" class="view-closer-btn">X</button>
+			<div class="view-main">
+				<h1 class="center">Extras</h1>
+				<hr>
+				<details class="details-1">
+					<summary>Installed</summary>
+					<div id="extras-installed-list"></div>
+				</details>
+				<button>View Marketplace</button>
+			</div>
+		</div>
+		<div class="view" id="extras-console-view">
+			<button onclick="extrasConsoleView.hide()" class="view-closer-btn">X</button>
+			<div class="view-main">
+				<h1 class="center">Extras Console</h1>
+				<hr>
+				<code><pre id="extras-console-display"></pre></code>
+			</div>
+		</div>
 		<div class="disableInteractionsMesh" id="disableInteractionsMesh"></div>
 		<div id="popups"></div>
+		<div id="extrasRuntimes">
+			
+		</div>
+		<!-- Extras -->
+		<script defer src="res/js/lib/brython.js"></script>
+		<script defer src="res/js/extras/runtime.js"></script>
+		<script defer src="res/js/extras/manager.js"></script>
 		<!-- Scripts -->
 		<script defer src="res/js/settings.js"></script>
 		<script defer src="res/js/theme.js"></script>
