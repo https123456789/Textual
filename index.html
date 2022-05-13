@@ -107,6 +107,10 @@
 				<h1 class="center">Save</h1>
 				<hr>
 				<div>
+					<p>Copy URL to document</p>
+					<button onclick="editor.copyDocumentURL(this)">Copy</button>
+				</div>
+				<div>
 					<p>Save as a file:</p>
 					<button onclick="editor.save()">Save</button>
 				</div>
@@ -140,6 +144,7 @@
 				<code><pre id="extras-console-display"></pre></code>
 			</div>
 		</div>
+		<div id="notification" class="notification"></div>
 		<div class="disableInteractionsMesh" id="disableInteractionsMesh"></div>
 		<div id="popups"></div>
 		<div id="extrasRuntimes">

@@ -64,3 +64,75 @@ body a {
 	top: -100vh;
 	border: none;
 }
+
+.notification {
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+	width: 15em;
+	height: 5em;
+	text-align: center;
+	border: 1px solid var(--theme-text-color);
+	animation-name: notification-slide-in;
+	animation-duration: 2s;
+	animation-fill-mode: forwards;
+	display: none;
+	z-index: 10000000000;
+	background-color: var(--editor-background-color);
+}
+
+.notification-slide-out {
+	animation-name: notification-slide-out;
+	animation-duration: 2s;
+	animation-fill-mode: forwards;
+}
+
+.btn-thinking {
+	
+}
+
+.btn-thinking:after {
+	width: 3ch;
+	content: "...";
+	animation-name: btn-thinking-anm;
+	/*animation-fill-mode: forwards;*/
+	animation-duration: 1s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes btn-thinking-anm {
+	0% {
+		content: "";
+	}
+	25% {
+		content: ".";
+	}
+	50% {
+		content: "..";
+	}
+	75% {
+		content: "...";
+	}
+	100% {
+		content: "";
+	}
+}
+
+@keyframes notification-slide-in {
+	0% {
+		right: -100vw;
+	}
+	100% {
+		right: 0px;
+	}
+}
+
+@keyframes notification-slide-out {
+	0% {
+		right: 0px;
+	}
+	100% {
+		right: -100vw;
+		display: none;
+	}
+}

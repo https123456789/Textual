@@ -45,6 +45,44 @@ class Editor {
 		}
 		this.giveUserDownload(contentType, "document." + fe);
 	}
+	copyDocumentURL(t) {
+		this.content = this.domRef.value;
+		var c = window.location.href.split('?')[0] +
+			"?content=" +
+			encodeURIComponent(this.content);
+		navigator.clipboard.writeText(c).then(() => {
+			var ne = document.getElementById("notification");
+			ne.innerHTML = "URL Copied to clipboard.";
+			ne.style.display = "block";
+			t.disabled = true;
+			t.classList.add("btn-thinking");
+			t.innerHTML = "Copying";
+			window.setTimeout(() => {
+				ne.classList.add("notification-slide-out");
+				window.setTimeout(() => {
+					ne.classList.remove("notification-slide-out");
+					t.disabled = false;
+					ne.style.display = "none";
+					t.classList.remove("btn-thinking");
+					t.innerHTML = "Copy";
+				}, 2000);
+			}, 5000);
+		}, (err) => {
+			var ne = document.getElementById("notification");
+			ne.innerHTML = "Error copying to clipboard.";
+			ne.style.display = "block";
+			window.setTimeout(() => {
+				ne.classList.add("notification-slide-out");
+				window.setTimeout(() => {
+					ne.classList.remove("notification-slide-out");
+					t.disabled = false;
+					ne.style.display = "none";
+					t.classList.remove("btn-thinking");
+					t.innerHTML = "Copy";
+				}, 2000);
+			}, 5000);
+		});
+	}
 	giveUserDownload(contentType, filename) {
 		console.log("Saving " + filename + " as " + contentType);
 		var linkElement = document.createElement("a");
